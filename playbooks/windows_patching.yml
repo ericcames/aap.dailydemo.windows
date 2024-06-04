@@ -1,0 +1,21 @@
+---
+- name: This is my Windows patching playbook
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_transport: credssp
+    ansible_winrm_server_cert_validation: ignore
+    ansible_port: 5986
+
+  tasks:
+
+    - name: Dereference the my_server variable
+      ansible.builtin.debug:
+        var: my_server
+
+    - name: Install Windows Updates
+      ansible.windows.win_updates:
+        category_names: "{{ categories | default(omit) }}"
+        reboot: '{{ reboot_server | default(true) }}'
+...

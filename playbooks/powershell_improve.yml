@@ -1,0 +1,26 @@
+---
+- name: Improve powershell perfomance
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_transport: credssp
+    ansible_winrm_server_cert_validation: ignore
+    ansible_port: 5986
+
+  tasks:
+
+    - name: Create the devops directory structure
+      ansible.windows.win_file:
+        path: 'c:\Users\devops'
+        state: directory
+
+    - name: Copy the powershell performance script into place
+      ansible.windows.win_copy:
+        src: scripts/powershell_performance
+        dest: 'c:\Users\devops\powershell_performance'
+
+    - name: Run basic PowerShell script
+      ansible.windows.win_powershell:
+        script: 'c:\Users\devops\powershell_performance'
+...

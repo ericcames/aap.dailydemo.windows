@@ -1,0 +1,17 @@
+---
+- name: The hosts in this inventory
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Print out the hosts
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }}"
+
+    - name: Make the hosts available to the next playbook
+      register: delete_inventory_host
+      ansible.builtin.set_stats:
+        data:
+          delete_inventory_host: "{{ inventory_hostname }}"
+...
