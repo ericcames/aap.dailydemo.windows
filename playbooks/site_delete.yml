@@ -1,0 +1,8 @@
+---
+- name: Delete aap daily demo windows server at Amazon
+  hosts: localhost
+  connection: local
+
+  roles:
+
+    - role: vpc_delete_aws

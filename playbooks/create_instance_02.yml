@@ -1,0 +1,7 @@
+---
+- name: Create machine instance
+  hosts: localhost
+  connection: local
+
+  roles:
+    - role: instance_create_aws
