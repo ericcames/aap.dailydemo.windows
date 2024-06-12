@@ -44,7 +44,7 @@
           assign_public_ip: "{{ assign_public_ip }}"
         image_id: "{{ image }}"
         tags:
-          Environment: Web Demo
+          Environment: windows-dailydemo
           AlwaysUp: "{{ alwaysup }}"
           Createdby: Ansible Controller
           Contact: "{{ my_email_address }}"
