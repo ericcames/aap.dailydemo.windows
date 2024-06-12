@@ -47,28 +47,28 @@
       Createdby: Ansible Controller
       Contact: "{{ my_email_address }}"
       DeleteBy: "{{ deleteby }}"
-      rules:
-        - proto: icmp
-          from_port: 8 # icmp type, -1 = any type
-          to_port: -1 # icmp subtype, -1 = any subtype
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow ping
-        - proto: tcp
-          ports: 22
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port 22
-        - proto: tcp
-          ports: 80
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port 80
-        - proto: tcp
-          ports: 3389
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port 3389
-        - proto: tcp
-          ports: 5986
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port 5986
+    rules:
+      - proto: icmp
+        from_port: 8 # icmp type, -1 = any type
+        to_port: -1 # icmp subtype, -1 = any subtype
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow ping
+      - proto: tcp
+        ports: 22
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 22
+      - proto: tcp
+        ports: 80
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 80
+      - proto: tcp
+        ports: 3389
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 3389
+      - proto: tcp
+        ports: 5986
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 5986
 
 - name: "Create subnet {{ ec2_vpc_subnet_name }}"
   tags:
