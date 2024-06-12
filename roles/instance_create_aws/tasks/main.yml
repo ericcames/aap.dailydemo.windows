@@ -34,7 +34,7 @@
     - name: "Creating AWS VMs in {{ region }}"
       register: instance
       amazon.aws.ec2_instance:
-        name: "Windows Web Server"
+        name: "Windows Daily Demo"
         region: "{{ region }}"
         key_name: "{{ my_ssh_key }}"
         vpc_subnet_id: "{{ vpc_subnet_id }}"
