@@ -64,7 +64,7 @@
       ansible.builtin.wait_for:
         port: 5986
         host: "{{ item['public_ip_address'] }}"
-        delay: 60
+        delay: 10
 
   rescue:
 
