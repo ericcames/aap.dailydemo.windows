@@ -35,6 +35,7 @@
       register: instance
       amazon.aws.ec2_instance:
         name: "Windows Daily Demo"
+        state: running
         region: "{{ region }}"
         key_name: "{{ my_ssh_key }}"
         vpc_subnet_id: "{{ vpc_subnet_id }}"
