@@ -23,7 +23,7 @@
       Contact: "{{ my_email_address }}"
       DeletebBy: "{{ deleteby }}"
 
-- name: "Create security group {{ ec2_security_group_name }}"
+- name: Create security group
   tags:
     - createsecgrp
     - onlyvpc
@@ -63,7 +63,7 @@
         cidr_ip: 0.0.0.0/0
         rule_desc: allow all on port 5986
 
-- name: "Create subnet {{ ec2_vpc_subnet_name }}"
+- name: Create subnet
   tags:
     - createsubnet
     - onlyvpc
@@ -82,7 +82,7 @@
       Contact: "{{ my_email_address }}"
       DeleteBy: "{{ deleteby }}"
 
-- name: "Create IGW {{ ec2_igw_name }}"
+- name: Create IGW
   tags:
     - createigw
     - onlyvpc
@@ -98,7 +98,7 @@
       Contact: "{{ my_email_address }}"
       DeletebBy: "{{ deleteby }}"
 
-- name: Create Internet route Table "{{ ec2_rt_name }}"
+- name: Create Internet route Table
   tags:
     - creatert
     - onlyvpc
