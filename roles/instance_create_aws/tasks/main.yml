@@ -65,6 +65,7 @@
         port: 5986
         host: "{{ item['public_ip_address'] }}"
         delay: 10
+        timeout: 600
 
   rescue:
 
