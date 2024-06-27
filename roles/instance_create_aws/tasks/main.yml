@@ -1,20 +1,25 @@
 ---
+- name: Record the machine_create_time
+  ansible.builtin.set_fact:
+    machine_create_time: "{{ lookup('pipe', 'date \"+%H:%M:%S\"') }}"
+
+# Make the start time available to other playbooks
+- name: Capture machine instance start time
+  ansible.builtin.set_stats:
+    data:
+      machine_create_time: "{{ machine_create_time }}"
+
 - name: Adding error handling
   block:
-
-    # Gather the start time to use in a later playbook
     - name: Record the machine_create_time
-      delegate_to: 127.0.0.1
-      register: machine_create_time_pre
-      changed_when: machine_create_time_pre.rc != 0
-      ansible.builtin.command:
-        cmd: "date '+%H:%M:%S'"
+      delegate_to: localhost
+      ansible.builtin.set_fact:
+        machine_create_time: "{{ lookup('pipe', 'date \"+%H:%M:%S\"') }}"
 
-    # Make the start time available to other playbooks
-    - name: Capture machine instance start time
+    - name: Publish to workflow artifacts
       ansible.builtin.set_stats:
         data:
-          machine_create_time: "{{ machine_create_time_pre.stdout }}"
+          machine_create_time: "{{ machine_create_time }}"
 
     - name: "Looking up subnet_id for {{ subnet_name }}"
       register: subnet_id
@@ -55,9 +60,9 @@
         wait: true
         wait_timeout: 600
 
-    - name: "The instance variable = {{ instance }}"
-      ansible.builtin.debug:
-        msg: "{{ instance }}"
+    # - name: "The instance variable = {{ instance }}"
+    #   ansible.builtin.debug:
+    #     msg: "{{ instance }}"
 
     # - name: Wait 300 seconds for port 5986 to become open
     #   loop: "{{ instance['instances'] }}"
