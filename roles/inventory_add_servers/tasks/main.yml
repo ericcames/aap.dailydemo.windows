@@ -36,7 +36,7 @@
     scope: write
     state: present
 
-- name: Update the AAP Managed Inventory with the Linux Daily Demo servers
+- name: Update the AAP Managed Inventory with the Windows Daily Demo servers
   loop: "{{ instance_info['instances'] }}"
   ansible.controller.host:
     controller_host: https://{{ controller_url }}
@@ -47,7 +47,7 @@
     state: present
     enabled: true
 
-- name: Create a group for our Linux Daily Demo servers
+- name: Create a group for our Windows Daily Demo servers
   loop: "{{ instance_info['instances'] }}"
   ansible.controller.group:
     controller_host: https://{{ controller_url }}
@@ -58,6 +58,11 @@
     inventory: "{{ managed_inventory_name }}"
     hosts: "{{ item['public_dns_name'] }}"
     preserve_existing_hosts: true
+    variables:
+      ansible_connection: winrm
+      ansible_winrm_transport: credssp
+      ansible_winrm_server_cert_validation: ignore
+      ansible_port: 5986
 
 - name: Update runtime inventory
   loop: "{{ instance_info['instances'] }}"
