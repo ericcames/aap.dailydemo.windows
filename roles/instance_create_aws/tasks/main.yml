@@ -64,13 +64,13 @@
     #   ansible.builtin.debug:
     #     msg: "{{ instance }}"
 
-    # - name: Wait 300 seconds for port 5986 to become open
-    #   loop: "{{ instance['instances'] }}"
-    #   ansible.builtin.wait_for:
-    #     port: 5986
-    #     host: "{{ item['public_ip_address'] }}"
-    #     delay: 10
-    #     timeout: 600
+    - name: Wait 300 seconds for port 5986 to become open
+      loop: "{{ instance['instances'] }}"
+      ansible.builtin.wait_for:
+        port: 5986
+        host: "{{ item['public_ip_address'] }}"
+        delay: 10
+        timeout: 300
 
   rescue:
 

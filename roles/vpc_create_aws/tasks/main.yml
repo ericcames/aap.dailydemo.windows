@@ -101,8 +101,8 @@
       Createdby: Ansible Controller
       Contact: "{{ my_email_address }}"
       DeleteBy: "{{ deleteby }}"
-      subnets:
-        - "{{ my_vpc_subnet.subnet.id }}"
-      routes:
-        - dest: 0.0.0.0/0
-          gateway_id: "{{ my_igw.gateway_id }}"
+    subnets:
+      - "{{ my_vpc_subnet.subnet.id }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ my_igw.gateway_id }}"
