@@ -24,9 +24,6 @@
       DeletebBy: "{{ deleteby }}"
 
 - name: Create security group
-  tags:
-    - createsecgrp
-    - onlyvpc
   register: my_security_group
   amazon.aws.ec2_security_group:
     name: "{{ ec2_security_group_name }}"
@@ -64,9 +61,6 @@
         rule_desc: allow all on port 5986
 
 - name: Create subnet
-  tags:
-    - createsubnet
-    - onlyvpc
   register: my_vpc_subnet
   amazon.aws.ec2_vpc_subnet:
     state: present
@@ -83,9 +77,6 @@
       DeleteBy: "{{ deleteby }}"
 
 - name: Create IGW
-  tags:
-    - createigw
-    - onlyvpc
   register: my_igw
   amazon.aws.ec2_vpc_igw:
     vpc_id: "{{ my_vpc.vpc.id }}"
@@ -99,9 +90,6 @@
       DeletebBy: "{{ deleteby }}"
 
 - name: Create Internet route Table
-  tags:
-    - creatert
-    - onlyvpc
   register: my_route_table
   amazon.aws.ec2_vpc_route_table:
     vpc_id: "{{ my_vpc.vpc.id }}"
