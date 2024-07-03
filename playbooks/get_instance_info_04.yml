@@ -1,0 +1,7 @@
+---
+- name: Control AWS instances
+  hosts: localhost
+  connection: local
+
+  roles:
+    - role: get_instance_info
