@@ -24,9 +24,9 @@
   amazon.aws.ec2_instance_info:
     region: "{{ region }}"
     filters:
-        "tag:Name": "{{ servername }}"
-        instance-state-name: ["running"]
-        "tag:Contact": "{{ my_email_address }}"
+      "tag:Name": "{{ servername }}"
+      instance-state-name: ["running"]
+      "tag:Contact": "{{ my_email_address }}"
 
 - name: Printing out instance_info.instances[0].instance_id
   when: instance_info.instances[0].instance_id is defined
@@ -61,53 +61,53 @@
     update_secrets: true
     credential_type: Machine
     inputs:
-        username: Administrator
-        password: "{{ admin_passwd.win_password }}"
+      username: Administrator
+      password: "{{ admin_passwd.win_password }}"
 
 - name: Capture public dns name
   register: my_server
   ansible.builtin.set_stats:
     data:
-        my_server: "{{ instance_info.instances[0].public_dns_name }}"
+      my_server: "{{ instance_info.instances[0].public_dns_name }}"
 
 - name: Capture public ip address
   register: my_public_ip
   ansible.builtin.set_stats:
     data:
-        my_public_ip: "{{ instance_info.instances[0].public_ip_address }}"
+      my_public_ip: "{{ instance_info.instances[0].public_ip_address }}"
 
 - name: Capture image id
   register: my_ami_id
   ansible.builtin.set_stats:
     data:
-        my_ami_id: "{{ instance_info.instances[0].image_id }}"
+      my_ami_id: "{{ instance_info.instances[0].image_id }}"
 
 - name: Capture instance id
   register: my_instance_id
   ansible.builtin.set_stats:
     data:
-        my_instance_id: "{{ instance_info.instances[0].instance_id }}"
+      my_instance_id: "{{ instance_info.instances[0].instance_id }}"
 
 - name: Capture instance type
   register: my_instance_type
   ansible.builtin.set_stats:
     data:
-        my_instance_type: "{{ instance_info.instances[0].instance_type }}"
+      my_instance_type: "{{ instance_info.instances[0].instance_type }}"
 
 - name: Capture public ip address
   register: my_launch_time
   ansible.builtin.set_stats:
     data:
-        my_launch_time: "{{ instance_info.instances[0].launch_time }}"
+      my_launch_time: "{{ instance_info.instances[0].launch_time }}"
 
 - name: Capture availability zone
   register: my_availability_zone
   ansible.builtin.set_stats:
     data:
-        my_availability_zone: "{{ instance_info.instances[0].placement.availability_zone }}"
+      my_availability_zone: "{{ instance_info.instances[0].placement.availability_zone }}"
 
 - name: Capture platform
   register: my_platform
   ansible.builtin.set_stats:
     data:
-        my_platform: "{{ instance_info.instances[0].platform }}"
+      my_platform: "{{ instance_info.instances[0].platform }}"
