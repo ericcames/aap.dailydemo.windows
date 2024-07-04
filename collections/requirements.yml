@@ -3,13 +3,11 @@ collections:
   - name: ansible.windows
   - name: ansible.posix
   - name: ansible.controller
-  - name: chocolatey.chocolatey
   - name: amazon.aws
   - name: servicenow.itsm
   - name: community.windows
   - name: community.general
   - name: community.aws
-    version: "6.1.0"
   - name: zjleblanc.reporting
     version: ">=1.3.0"
 ...

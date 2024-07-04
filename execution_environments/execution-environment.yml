@@ -1,0 +1,12 @@
+---
+version: 3
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+dependencies:
+  python:
+    - boto3==1.26.0
+    - botocore==1.29.0
+    - cryptography
+options:
+  package_manager_path: /usr/bin/microdnf
