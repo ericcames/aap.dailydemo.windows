@@ -1,0 +1,14 @@
+---
+- name: Create the devops directory structure
+  ansible.windows.win_file:
+    path: 'c:\Users\devops'
+    state: directory
+
+- name: Copy the powershell performance script into place
+  ansible.windows.win_copy:
+    src: scripts/powershell_performance
+    dest: 'c:\Users\devops\powershell_performance'
+
+- name: Run basic PowerShell script
+  ansible.windows.win_powershell:
+    script: 'c:\Users\devops\powershell_performance'
