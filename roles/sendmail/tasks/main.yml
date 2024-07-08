@@ -17,10 +17,12 @@
     secure: try
     username: "{{ MAILHOST_USERNAME }}"
     password: "{{ MAILHOST_PASSWORD }}"
-    subject: Ansible Automation Platform (AAP) Daily Demo - Linux
+    subject: Ansible Automation Platform (AAP) Daily Demo - Windows
     body: "System {{ my_server }} has been successfully provisioned using AAP.\n
-           You can admin the machine here: https://{{ my_server }}:9090\n
-           ssh {{ my_server }}"
+          The playbooks and notes can be found here: https://github.com/ericcames/aap.dailydemo.windows\n
+          The following address http://{{ my_server }} will take you to a custom website.\n
+          The server will be destroyed at 01:15 AM UTC time.\n
+          Remote Desktop is enabled for the devops user and the password is redhat321\n"
     from: "{{ mailfrom }}"
     to: "{{ mailto }}"
     bcc: "{{ bccto }}"
