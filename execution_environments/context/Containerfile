@@ -1,4 +1,4 @@
-ARG EE_BASE_IMAGE="registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest"
+ARG EE_BASE_IMAGE="registry.redhat.io/ansible-automation-platform-23/ee-supported-rhel8:latest"
 ARG PYCMD="/usr/bin/python3"
 ARG PKGMGR_PRESERVE_CACHE=""
 ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS=""

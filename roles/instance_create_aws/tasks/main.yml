@@ -56,7 +56,7 @@
           Contact: "{{ my_email_address }}"
           DeletebBy: "{{ ec2_ansible_group }}"
           info: "This instance was built by the Sales Team"
-        user_data: "{{ lookup('file', 'scripts/aws_userdata') }}"
+        user_data: "{{ lookup('template', 'scripts/aws_userdata') }}"
         wait: true
         wait_timeout: 600
 
