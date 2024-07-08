@@ -1,0 +1,54 @@
+---
+- name: Install IIS Webserver
+  ansible.windows.win_feature:
+    name: Web-Server
+    state: present
+
+- name: Delete default IIS website
+  ansible.builtin.win_iis_website:
+    name: "Default Web Site"
+    state: absent
+
+- name: Create site directory structure
+  with_items: "{{ iis_sites }}"
+  ansible.windows.win_file:
+    path: "{{ item.path }}"
+    state: directory
+
+- name: Create IIS site
+  with_items: "{{ iis_sites }}"
+  notify: Restart iis service
+  ansible.builtin.win_iis_website:
+    name: "{{ item.name }}"
+    state: started
+    port: "{{ item.port }}"
+    physical_path: "{{ item.path }}"
+
+- name: Open port for site on the firewall
+  with_items: "{{ iis_sites }}"
+  ansible.builtin.win_firewall_rule:
+    name: "iisport{{ item.port }}"
+    enable: true
+    state: present
+    localport: "{{ item.port }}"
+    action: Allow
+    direction: In
+    protocol: Tcp
+
+- name: Template simple web site to iis_site_path as index.html
+  with_items: "{{ iis_sites }}"
+  ansible.windows.win_template:
+    src: 'index.html.j2'
+    dest: '{{ item.path }}\index.html'
+
+- name: Copy a single file
+  with_items: "{{ iis_sites }}"
+  ansible.windows.win_copy:
+    src: images/aap.png
+    dest: "{{ item.path }}/aap.png"
+
+- name: Show website addresses
+  loop:
+    - http://{{ inventory_hostname }}
+  ansible.builtin.debug:
+    msg: "{{ item }}"
