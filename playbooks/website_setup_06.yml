@@ -1,0 +1,7 @@
+---
+- name: Build our custom website
+  hosts: windemo
+
+  roles:
+
+    - role: website_setup

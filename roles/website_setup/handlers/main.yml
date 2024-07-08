@@ -1,0 +1,6 @@
+---
+- name: Restart iis service
+  ansible.windows.win_service:
+    name: W3Svc
+    state: restarted
+    start_mode: auto
