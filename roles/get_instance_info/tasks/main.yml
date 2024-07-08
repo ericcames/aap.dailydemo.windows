@@ -37,18 +37,18 @@
 #   ansible.builtin.debug:
 #     msg: "{{ zigfreed_private_key }}"
 
-- name: Get the Administrator password
-  register: admin_passwd
-  community.aws.ec2_win_password:
-    instance_id: "{{ instance_info.instances[0].instance_id }}"
-    region: "{{ region }}"
-    key_data: "{{ zigfreed_private_key }}"
-    wait: true
-    wait_timeout: 45
+# - name: Get the Administrator password
+#   register: admin_passwd
+#   community.aws.ec2_win_password:
+#     instance_id: "{{ instance_info.instances[0].instance_id }}"
+#     region: "{{ region }}"
+#     key_data: "{{ zigfreed_private_key }}"
+#     wait: true
+#     wait_timeout: 45
 
-- name: Print out the admin password
-  ansible.builtin.debug:
-    var: admin_passwd.win_password
+# - name: Print out the admin password
+#   ansible.builtin.debug:
+#     var: admin_passwd.win_password
 
 - name: Update the Windows AWS machine credential
   ansible.controller.credential:
