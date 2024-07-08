@@ -1,7 +1,6 @@
 ---
 - name: Improve the way powershell works
   hosts: windemo
-  connection: local
 
   roles:
 
