@@ -1,24 +1,4 @@
 ---
-# - name: Check for our mandatory variables
-#   # You can create a custom credential for the mandatory variables
-#   ansible.builtin.assert:
-#     that:
-#       - controller_url is defined
-#       - controller_user is defined
-#       - controller_passwd is defined
-#     fail_msg: "Please make sure your mandatory variables are set"
-#     success_msg: "All mandatory variables have been set"
-
-# - name: Create a new token using username/password
-#   ansible.controller.token:
-#     controller_host: https://{{ controller_url }}
-#     controller_username: "{{ controller_user }}"
-#     controller_password: "{{ controller_passwd }}"
-#     validate_certs: false
-#     description: Daily Demo token
-#     scope: write
-#     state: present
-
 - name: Get instances id with tag
   register: instance_info
   amazon.aws.ec2_instance_info:
@@ -32,37 +12,6 @@
   when: instance_info.instances[0].instance_id is defined
   ansible.builtin.debug:
     msg: "{{ instance_info.instances[0].instance_id }}"
-
-# - name: Print zigfreed_private_key
-#   ansible.builtin.debug:
-#     msg: "{{ zigfreed_private_key }}"
-
-# - name: Get the Administrator password
-#   register: admin_passwd
-#   community.aws.ec2_win_password:
-#     instance_id: "{{ instance_info.instances[0].instance_id }}"
-#     region: "{{ region }}"
-#     key_data: "{{ zigfreed_private_key }}"
-#     wait: true
-#     wait_timeout: 45
-
-# - name: Print out the admin password
-#   ansible.builtin.debug:
-#     var: admin_passwd.win_password
-
-# - name: Update the Windows AWS machine credential
-#   ansible.controller.credential:
-#     controller_host: "https://{{ controller_url }}"
-#     controller_oauthtoken: "{{ controller_token }}"
-#     name: Windows AWS
-#     organization: Ames Company
-#     description: Used in the Windows AWS Demo
-#     state: present
-#     update_secrets: true
-#     credential_type: Machine
-#     inputs:
-#       username: Administrator
-#       password: "{{ admin_passwd.win_password }}"
 
 - name: Capture public dns name
   register: my_server
