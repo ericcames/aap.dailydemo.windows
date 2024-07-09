@@ -8,7 +8,7 @@
     key: PasswordComplexity
     value: 0
 
-- name: Create the devops directory structure
+- name: Create the users directory structure
   loop: "{{ users }}"
   ansible.windows.win_file:
     path: c:\Users\"{{ item['name'] }}"
