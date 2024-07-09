@@ -1,0 +1,7 @@
+---
+- name: Windows account creation
+  hosts: windemo
+
+  roles:
+
+    - role: windows_account_create

@@ -1,0 +1,14 @@
+---
+users:
+  - name: devops
+    groups:
+      - Users
+      - Remote Desktop Users
+      - Administrators
+    user_password: Ansible-r0cks!
+  - name: ansible-svc
+    groups:
+      - Users
+      - Remote Desktop Users
+      - Administrators
+    user_password: Ansible-r0cks!
