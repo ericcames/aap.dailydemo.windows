@@ -1,0 +1,7 @@
+---
+- name: Windows patching
+  hosts: windemo
+
+  roles:
+
+    - role: windows_patching
