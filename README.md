@@ -4,10 +4,6 @@ A demo designed to showcase many of the use cases that people are looking for.  
 
 # The workflow
 
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/DDLWF1.png "Start of workflow")
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/DDLWF2.png "Middle of Workflow")
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/DDLWF3.png "End of Workflow")
-
 **The playbooks**
 
 [1. Create our network container](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/create_vpc_01.yml "create_vpc_01.yml") <br>
@@ -46,7 +42,7 @@ extra_vars:
 [6. User access](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/windows_account_create_06.yml "windows_account_create_06.yml")<br>
 [6. Website deployment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/website_setup_06.yml "website_setup_06.yml")<br>
 [7. Patching](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/provision_user_access_07.yml "windows_patching_07.yml")<br>
-[11. Send notification that the website is ready](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/sendmail_10.yml "sendmail_10.yml")<br>
+[8. Send notification that the website is ready](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/sendmail_10.yml "sendmail_10.yml")<br>
 - Custom Mail Server credential
 ```
 Input configuration
@@ -90,11 +86,7 @@ ServiceNow
 [Create a CMDB record](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/create_ci.yml "create_ci.yml") <br>
 [Create a CMDB relationship](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/create_cmdb_relationship.yml "create_cmdb_relationship.yml") <br>
 
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/DDLWF2.png "Middle of Workflow")
-
 [Create incident ticket](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/incident_create.yml "incident_create.yml") <br>
-
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/DDLWF1.png "Start of workflow")
 
 [Update requested item ticket](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/update_sn_req_itm.yml "update_sn_req_itm.yml") <br>
 
@@ -152,6 +144,9 @@ OAuth Redirect URL: https://ven05433.service-now.com/api/sn_ansible_spoke/ansibl
 - Automated incident management example
 
 [Example Error Handling in support of incident enrichment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/instance_create_aws/tasks/main.yml "Example Error Handling") <br>
+[Youtube video on Automated Incident enrichment](https://youtu.be/ieO-cbzNqjU?si=z28o3rpAgLTDqdnB "Youtube video on Automated Incident enrichment") <br>
+
+
 
 ```
 - name: Adding incident management error handling
@@ -183,16 +178,6 @@ OAuth Redirect URL: https://ven05433.service-now.com/api/sn_ansible_spoke/ansibl
       ansible.builtin.fail:
         msg: failing so we create the incident ticket
 ```
-
-# The website
-
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/Web01.png "Webtop")
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/Web02.png "Webbottom")
-
-- Patching Report
-
-![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/Patchingreport.png "zjleblanc.reporting collection")
-
 # A youtube video of the demo
 
-- [AAP Daily Demo Windows](https://youtu.be/Wvf7-CZmAHI?si=oxqDRAWsfqpXTnD- "AAP Daily Demo Windows")
+- [AAP Daily Demo Windows](https://youtu.be/RNwel6BeCVI?si=ruIwcDFp6dyyAkjO "AAP Daily Demo Windows")
