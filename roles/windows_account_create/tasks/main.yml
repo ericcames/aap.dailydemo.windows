@@ -10,12 +10,14 @@
 
 - name: Create the users directory structure
   loop: "{{ users }}"
+  no_log: true
   ansible.windows.win_file:
     path: c:\Users\{{ item['name'] }}
     state: directory
 
 - name: Create local user accounts
   loop: "{{ users }}"
+  no_log: true
   ansible.windows.win_user:
     name: "{{ item['name'] }}"
     password: "{{ item['user_password'] }}"
