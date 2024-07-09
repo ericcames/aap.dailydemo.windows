@@ -1,0 +1,5 @@
+windows_patching_reboot_server: true
+windows_patching_categories:
+  - CrticalUpdates
+  - SecurityUpdates
+  - ServicePacks

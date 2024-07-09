@@ -1,0 +1,5 @@
+---
+- name: Install Windows Updates
+  ansible.windows.win_updates:
+    category_names: "{{ windows_patching_categories | default(omit) }}"
+    reboot: '{{ windows_patching_reboot_server | default(true) }}'
