@@ -11,7 +11,7 @@
 - name: Create the users directory structure
   loop: "{{ users }}"
   ansible.windows.win_file:
-    path: c:\Users\"{{ item['name'] }}"
+    path: c:\Users\{{ item['name'] }}
     state: directory
 
 - name: Create local user accounts
@@ -21,7 +21,7 @@
     password: "{{ item['user_password'] }}"
     state: present
     groups: "{{ item['groups'] }}"
-    home_directory: c:\Users\"{{ item['name'] }}"
+    home_directory: c:\Users\{{ item['name'] }}
     password_never_expires: true
     update_password: "on_create"
     user_cannot_change_password: true
