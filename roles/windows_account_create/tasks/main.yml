@@ -1,3 +1,7 @@
+- name: Include our user info
+  ansible.builtin.include_vars:
+    file: files/{{ windows_account_create_user_list_vault }}
+
 - name: Relax password complexity requirements
   community.windows.win_security_policy:
     section: System Access
@@ -5,20 +9,19 @@
     value: 0
 
 - name: Create the devops directory structure
+  loop: "{{ users }}"
   ansible.windows.win_file:
-    path: 'c:\Users\devops'
+    path: c:\Users\"{{ item['name'] }}"
     state: directory
 
 - name: Create local user accounts
+  loop: "{{ users }}"
   ansible.windows.win_user:
-    name: devops
-    password: "{{ devops_password }}"
+    name: "{{ item['name'] }}"
+    password: "{{ item['user_password'] }}"
     state: present
-    groups:
-      - Users
-      - Remote Desktop Users
-      - Administrators
-    home_directory: 'c:\Users\devops'
+    groups: "{{ item['groups'] }}"
+    home_directory: c:\Users\"{{ item['name'] }}"
     password_never_expires: true
     update_password: "on_create"
     user_cannot_change_password: true

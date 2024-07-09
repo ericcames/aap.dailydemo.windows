@@ -5,10 +5,10 @@ users:
       - Users
       - Remote Desktop Users
       - Administrators
-    user_password: Ansible-r0cks!
+    user_password: ansiblerocks
   - name: ansible-svc
     groups:
       - Users
       - Remote Desktop Users
       - Administrators
-    user_password: Ansible-r0cks!
+    user_password: ansiblerocks
