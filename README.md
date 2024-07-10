@@ -40,7 +40,7 @@ extra_vars:
   controller_passwd: '{{password}}'
 ```
 [4. Gather instance information](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/get_instance_info_04.yml "get_instance_info_04.yml")<br>
-[5. Powershell Improvment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/powershell_improve_05.yml "powershell_improve_05.yml")<br>
+[5. Powershell Improvement](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/powershell_improve_05.yml "powershell_improve_05.yml")<br>
 [6. User access](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/windows_account_create_06.yml "windows_account_create_06.yml")<br>
 [6. Website deployment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/website_setup_06.yml "website_setup_06.yml")<br>
 [7. Patching](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/provision_user_access_07.yml "windows_patching_07.yml")<br>
@@ -180,3 +180,33 @@ OAuth Redirect URL: https://ven05433.service-now.com/api/sn_ansible_spoke/ansibl
 # A youtube video of the demo
 
 - [AAP Daily Demo Windows](https://youtu.be/RNwel6BeCVI?si=ruIwcDFp6dyyAkjO "AAP Daily Demo Windows")
+
+# Important Note
+The user_data line in the task listed below is designed to work with a template to set the password on the machine as it is built.  It works with a machine credential in the ansible automation platform.
+
+[Windows Machine Instance Creation](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/instance_create_aws/tasks/main.yml "Windows Machine Instance Creation")<br>
+```
+- name: "Creating AWS VMs in {{ region }}"
+      register: instance
+      amazon.aws.ec2_instance:
+        name: "Windows Daily Demo"
+        state: running
+        region: "{{ region }}"
+        key_name: "{{ my_ssh_key }}"
+        vpc_subnet_id: "{{ vpc_subnet_id }}"
+        instance_type: "{{ instance_type }}"
+        security_group: "{{ ec2_security_group_name }}"
+        network:
+          assign_public_ip: "{{ assign_public_ip }}"
+        image_id: "{{ image }}"
+        tags:
+          Environment: windows-dailydemo
+          AlwaysUp: "{{ alwaysup }}"
+          Createdby: Ansible Controller
+          Contact: "{{ my_email_address }}"
+          DeletebBy: "{{ ec2_ansible_group }}"
+          info: "This instance was built by the Sales Team"
+        user_data: "{{ lookup('template', 'scripts/aws_userdata') }}"
+        wait: true
+        wait_timeout: 600
+```
