@@ -3,7 +3,7 @@ iis_sites:
   - name: 'AnsibleDemo'
     port: '80'
     path: 'C:\sites\dailydemo'
-iis_test_message: "Hello World!  My Demo IIS Server"
+iis_test_message: "This website is running on Microsoft Windows Server 2022 Datacenter"
 sales_email_id: mickey
 tech_email_id: goofy
 sales_person_name: "Mickey Mouse"
