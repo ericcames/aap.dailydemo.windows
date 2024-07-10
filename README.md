@@ -177,6 +177,11 @@ OAuth Redirect URL: https://ven05433.service-now.com/api/sn_ansible_spoke/ansibl
       ansible.builtin.fail:
         msg: failing so we create the incident ticket
 ```
+# The website
+
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/windowsweb1.png "Webtop")
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/windowsweb2.png "Webbottom")
+
 # A youtube video of the demo
 
 - [AAP Daily Demo Windows](https://youtu.be/RNwel6BeCVI?si=ruIwcDFp6dyyAkjO "AAP Daily Demo Windows")
