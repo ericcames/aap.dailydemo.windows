@@ -184,6 +184,8 @@ OAuth Redirect URL: https://ven05433.service-now.com/api/sn_ansible_spoke/ansibl
 # Important Note
 The user_data line in the task listed below is designed to work with a template to set the password on the machine as it is built.  It works with a machine credential in the ansible automation platform.
 
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/windowsmachinecred.png "Windows Machine Credential")
+
 [Windows Machine Instance Creation](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/instance_create_aws/tasks/main.yml "Windows Machine Instance Creation")<br>
 ```
 - name: "Creating AWS VMs in {{ region }}"
