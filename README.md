@@ -218,13 +218,11 @@ The user_data line in the task listed below is designed to work with a template 
         wait_timeout: 600
 ```
 # Day 2 Operations
-
 **Audit**
-
+Audit registry entries and repair if needed.  Document the work in a CSV file.<br>
 [Audit](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/auditme.yml "auditme.yml") <br>
 ![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winaudit1.png "Fixed")
 ![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winaudit2.png "Good")
-
 
 # Adhoc windows commands
 ```
