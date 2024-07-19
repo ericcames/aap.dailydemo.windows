@@ -224,6 +224,12 @@ Audit registry entries and repair if needed.  Document the work in a CSV file.<b
 ![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winaudit1.png "Fixed")
 ![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winaudit2.png "Good")
 
+**Patching**<br>
+We are using a survey to select what windows patches we want to apply as well as whether or not to reboot the machine.<br>
+[Audit](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/windows_patching_07.yml "windows_patching_07.yml") <br>
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winpatch1.png "surveytop")
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winpatch2.png "surveybottom")
+
 # Adhoc windows commands
 ```
 win_ping
