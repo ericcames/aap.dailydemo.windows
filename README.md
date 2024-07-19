@@ -88,7 +88,7 @@ ServiceNow
 [Create incident ticket](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/incident_create.yml "incident_create.yml") <br>
 [Update requested item ticket](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/update_sn_req_itm.yml "update_sn_req_itm.yml") <br>
 
-ServiceNow credential
+ServiceNow credential<br>
 Input configuration
 ```
 fields:
