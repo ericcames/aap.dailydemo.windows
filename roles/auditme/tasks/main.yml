@@ -1,6 +1,7 @@
 ---
 - name: Validate the state of the server
   block:
+
     - name: Read registry value for RequireStrongKey
       register: strongkey
       ansible.windows.win_reg_stat:
@@ -24,14 +25,8 @@
 
   # Apply the fix here and validate here
   rescue:
-    - name: Read registry value for RequireStrongKey
-      register: strgkey
-      ansible.windows.win_reg_stat:
-        path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-        name: RequireStrongKey
 
     - name: Update registry path RequireStrongKey with entry 1 decimal value
-      notify: Set Fix Status
       register: fixout
       ansible.windows.win_regedit:
         path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
@@ -49,6 +44,10 @@
     - name: Set Second Audit Status Facts
       ansible.builtin.set_fact:
         secondaudit: "{{ (strongkey['value'] == 1) | ansible.builtin.ternary('Pass', 'Fail') }}"
+
+    - name: Set Fix Status
+      ansible.builtin.set_fact:
+        fixapplied: "{{ (strongkey['value'] == 1) | ansible.builtin.ternary('Yes', 'No') }}"
 
   # Update the csv file
   always:
