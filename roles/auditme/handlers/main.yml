@@ -1,0 +1,4 @@
+---
+- name: Set Fix Status
+  ansible.builtin.set_fact:
+    fixapplied: "{{ strgkey['value'] == 1 | ternary('Yes', 'No') }}"

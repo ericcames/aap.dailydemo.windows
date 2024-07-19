@@ -1,0 +1,7 @@
+---
+- name: Audit Windows system
+  hosts: windemo
+
+  roles:
+
+    - role: auditme
