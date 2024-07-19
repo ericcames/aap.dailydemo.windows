@@ -45,7 +45,7 @@ extra_vars:
 [7. Patching](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/provision_user_access_07.yml "windows_patching_07.yml")<br>
 [8. Send notification that the website is ready](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/sendmail_10.yml "sendmail_10.yml")<br>
 
-Custom Mail Server credential
+Custom Mail Server credential<br>
 Input configuration
 ```
 fields:
