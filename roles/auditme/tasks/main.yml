@@ -1,0 +1,65 @@
+---
+- name: Validate the state of the server
+  block:
+    - name: Read registry value for RequireStrongKey
+      register: strongkey
+      ansible.windows.win_reg_stat:
+        path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
+        name: RequireStrongKey
+
+    - name: Set First Audit Status
+      ansible.builtin.set_fact:
+        firstaudit: "{{ strongkey['value'] == 1 | ternary('Pass', 'Fail') }}"
+        cacheable: true
+
+    - name: Get Registry Value
+      ansible.builtin.set_fact:
+        regkeyval: "{{ strongkey['value'] }}"
+        cacheable: true
+
+    - name: Fail the job if reg value is wrong
+      when: strongkey['value'] == 0
+      ansible.builtin.fail:
+        msg: The reg key value is not set correctly
+
+  # Apply the fix here and validate here
+  rescue:
+    - name: Read registry value for RequireStrongKey
+      register: strgkey
+      ansible.windows.win_reg_stat:
+        path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
+        name: RequireStrongKey
+
+    - name: Update registry path RequireStrongKey with entry 1 decimal value
+      notify: Set Fix Status
+      register: fixout
+      ansible.windows.win_regedit:
+        path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
+        name: RequireStrongKey
+        data: 1
+        type: dword
+
+    # Audit on the registry key RequireStrongKey CIS control #2.3.6.6
+    - name: Read registry value for RequireStrongKey
+      register: strongkey
+      ansible.windows.win_reg_stat:
+        path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
+        name: RequireStrongKey
+
+    - name: Set Second Audit Status Facts
+      ansible.builtin.set_fact:
+        secondaudit: "{{ strongkey['value'] == 1 | ternary('Pass', 'Fail') }}"
+
+  # Update the csv file
+  always:
+    - name: Create a directory if it does not exist
+      ansible.windows.win_file:
+        path: c:\cis_csv\
+        state: directory
+        mode: "0755"
+
+    - name: Update CSV with Fix Data
+      ansible.builtin.template:
+        src: templates/csv.j2
+        dest: c:\cis_csv\{{ ansible_facts['hostname'] }}.csv
+        mode: "0755"

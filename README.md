@@ -11,10 +11,10 @@ A demo designed to showcase many of the use cases that people are looking for.  
 [1. Create our network container](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/create_vpc_01.yml "create_vpc_01.yml") <br>
 [2. Create our virtual machine](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/create_instance_02.yml "create_instance_02.yml")<br>
 [3. Update our inventory](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/add_inventory_03.yml "add_inventory_03.yml")<br>
-- Custom Ansible Controller Credential
-```
-Input configuration
 
+Custom Ansible Controller Credential<br>
+Input configuration
+```
 fields:
   - id: url
     type: string
@@ -31,9 +31,8 @@ required:
   - user
   - password
 ```
-```
 Injector configuration
-
+```
 extra_vars:
   controller_url: '{{url}}'
   controller_user: '{{user}}'
@@ -45,10 +44,10 @@ extra_vars:
 [6. Website deployment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/website_setup_06.yml "website_setup_06.yml")<br>
 [7. Patching](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/provision_user_access_07.yml "windows_patching_07.yml")<br>
 [8. Send notification that the website is ready](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/sendmail_10.yml "sendmail_10.yml")<br>
-- Custom Mail Server credential
-```
-Input configuration
 
+Custom Mail Server credential
+Input configuration
+```
 fields:
   - id: smtp_server
     type: string
@@ -69,9 +68,8 @@ required:
   - smtp_username
   - smtp_password
 ```
-```
 Injector configuration
-
+```
 extra_vars:
   MAILHOST: '{{smtp_server}}'
   MAILHOST_PORT: '{{smtp_port}}'
@@ -90,10 +88,9 @@ ServiceNow
 [Create incident ticket](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/incident_create.yml "incident_create.yml") <br>
 [Update requested item ticket](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/servicenow/update_sn_req_itm.yml "update_sn_req_itm.yml") <br>
 
-- ServiceNow credential
-```
+ServiceNow credential
 Input configuration
-
+```
 fields:
   - id: instance
     type: string
@@ -110,9 +107,8 @@ required:
   - username
   - password
 ```
-```
 Injector configuration
-
+```
 env:
   SN_HOST: '{{instance}}'
   SN_PASSWORD: '{{password}}'
