@@ -217,3 +217,14 @@ The user_data line in the task listed below is designed to work with a template 
         wait: true
         wait_timeout: 600
 ```
+# Adhoc windows commands
+```
+win_ping
+win_shell -> Get-Service
+win_shell -> Get-Process
+setup
+win_shell -> Add-WindowsCapability -Online -Name OpenSSH.Server
+win_shell -> Start-Service sshd
+win_shell -> Set-Service -Name sshd -StartupType ‘Automatic’
+win_service -> name=sshd
+```
