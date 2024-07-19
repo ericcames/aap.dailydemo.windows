@@ -12,3 +12,10 @@
 - name: Run basic PowerShell script
   ansible.windows.win_powershell:
     script: 'c:\Users\devops\powershell_performance'
+
+- name: Update registry path RequireStrongKey with entry 0 decimal value
+  ansible.windows.win_regedit:
+    path: HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
+    name: RequireStrongKey
+    data: 0
+    type: dword
