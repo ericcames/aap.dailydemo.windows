@@ -9,7 +9,7 @@
 
     - name: Set First Audit Status
       ansible.builtin.set_fact:
-        firstaudit: "{{ strongkey['value'] == 1 | ternary('Pass', 'Fail') }}"
+        firstaudit: "{{ (strongkey['value'] == 1) | ansible.builtin.ternary('Pass', 'Fail') }}"
         cacheable: true
 
     - name: Get Registry Value
@@ -48,7 +48,7 @@
 
     - name: Set Second Audit Status Facts
       ansible.builtin.set_fact:
-        secondaudit: "{{ strongkey['value'] == 1 | ternary('Pass', 'Fail') }}"
+        secondaudit: "{{ (strongkey['value'] == 1) | ansible.builtin.ternary('Pass', 'Fail') }}"
 
   # Update the csv file
   always:
