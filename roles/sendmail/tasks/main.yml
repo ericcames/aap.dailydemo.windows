@@ -22,7 +22,7 @@
           The playbooks and notes can be found here: https://github.com/ericcames/aap.dailydemo.windows\n
           The following address http://{{ my_server }} will take you to a custom website.\n
           The server will be destroyed at 01:15 AM UTC time.\n
-          Remote Desktop is enabled for the devops user and the password is redhat321\n"
+          Remote Desktop is enabled; Ansible-r0cks!\n"
     from: "{{ mailfrom }}"
     to: "{{ mailto }}"
     bcc: "{{ bccto }}"
