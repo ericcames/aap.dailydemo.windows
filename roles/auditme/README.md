@@ -21,6 +21,7 @@ Example Playbook
 ---
 - name: Audit Windows system
   hosts: windemo
+  gather_facts: true
 
   roles:
 
