@@ -39,7 +39,7 @@
 - name: Remove inventory host groups
   loop:
     - windemo
-    - windemo ssh
+    - windemo_ssh
   ansible.controller.group:
     controller_host: https://{{ controller_url }}
     controller_oauthtoken: "{{ controller_token }}"

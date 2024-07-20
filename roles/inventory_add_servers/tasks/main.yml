@@ -70,7 +70,7 @@
     controller_host: https://{{ controller_url }}
     controller_oauthtoken: "{{ controller_token }}"
     validate_certs: false
-    name: windemo ssh
+    name: windemo_ssh
     description: Automation Controller Group
     inventory: "{{ managed_inventory_name }}"
     hosts: "{{ item['public_dns_name'] }}"
@@ -82,7 +82,6 @@
     name: "{{ item['public_dns_name'] }}"
     groups:
       - windemo
-      - windemo ssh
 
 - name: Capture public ip address
   ansible.builtin.set_fact:
