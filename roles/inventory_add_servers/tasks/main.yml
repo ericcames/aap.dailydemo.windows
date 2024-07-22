@@ -64,18 +64,6 @@
       ansible_winrm_server_cert_validation: ignore
       ansible_port: 5986
 
-- name: Create a group for our Windows Daily Demo servers using ssh
-  loop: "{{ instance_info['instances'] }}"
-  ansible.controller.group:
-    controller_host: https://{{ controller_url }}
-    controller_oauthtoken: "{{ controller_token }}"
-    validate_certs: false
-    name: windemo_ssh
-    description: Automation Controller Group
-    inventory: "{{ managed_inventory_name }}"
-    hosts: "{{ item['public_dns_name'] }}"
-    preserve_existing_hosts: true
-
 - name: Update runtime inventory
   loop: "{{ instance_info['instances'] }}"
   ansible.builtin.add_host:
