@@ -1,0 +1,13 @@
+windows_servers:
+  hosts:
+    webserver01:
+      ansible_host: 192.0.2.140
+      http_port: 80
+    webserver02:
+      ansible_host: 192.0.2.150
+      http_port: 443
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_transport: credssp
+    ansible_winrm_server_cert_validation: ignore
+    ansible_port: 5986
