@@ -47,6 +47,12 @@
     src: images/aap.png
     dest: "{{ item.path }}/aap.png"
 
+- name: Copy a single file
+  with_items: "{{ iis_sites }}"
+  ansible.windows.win_copy:
+    src: images/AmesQNRCode.png
+    dest: "{{ item.path }}/AmesQNRCode.png"
+
 - name: Show website addresses
   loop:
     - http://{{ inventory_hostname }}
