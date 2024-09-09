@@ -1,0 +1,13 @@
+---
+- name: Print out variables from servicenow
+  hosts: localhost
+
+  tasks:
+
+    - name: Print the variables out
+      ansible.builtin.debug:
+        msg:
+          - "Customer ordered servers at {{ cloud_provider }}"
+          - "Customer ordered {{ instance_size }} servers"
+          - "Customer ordered {{ number_of_instance }} of each"
+          - "Ticket number is {{ ticket_number }}"
