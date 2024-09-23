@@ -2,6 +2,15 @@
 - name: Adding error handling
   block:
 
+    - name: Get instances id with tag
+      register: instance_info
+      amazon.aws.ec2_instance_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": "{{ servername }}"
+          instance-state-name: ["running"]
+          "tag:Contact": "{{ my_email_address }}"
+
     - name: "Looking up subnet_id for {{ subnet_name }}"
       register: subnet_id
       amazon.aws.ec2_vpc_subnet_info:
