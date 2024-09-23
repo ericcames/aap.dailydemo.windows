@@ -16,7 +16,7 @@
 - name: Printing out the IMDSv1 setting (http_tokens)
   when: instance_info.instances[0].instance_id is defined
   ansible.builtin.debug:
-    msg: "{{ inventory_hostname }} IMDSv2 is {{ instance_info.instances[0].metadata_options.http_tokens }}"
+    msg: "{{ servername }} IMDSv2 is {{ instance_info.instances[0].metadata_options.http_tokens }}"
 
 - name: Capture public dns name
   register: my_server
