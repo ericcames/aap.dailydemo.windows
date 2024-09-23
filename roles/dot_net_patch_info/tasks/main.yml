@@ -6,7 +6,7 @@
 
 - name: Copy the powershell patch report script into place
   ansible.windows.win_copy:
-    src: scripts/powershell_performance
+    src: scripts/patch_report
     dest: 'c:\Users\devops\patch_report'
 
 - name: Run PowerShell patch report script
