@@ -1,0 +1,7 @@
+---
+- name: Update the IMDSv2 value
+  hosts: localhost
+
+  roles:
+
+    - role: update_IMDSv2_setting
