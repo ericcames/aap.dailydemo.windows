@@ -1,0 +1,90 @@
+---
+- name: Adding error handling
+  block:
+
+    - name: "Looking up subnet_id for {{ subnet_name }}"
+      register: subnet_id
+      amazon.aws.ec2_vpc_subnet_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": "{{ subnet_name }}"
+
+    - name: "Setting vpc_subnet_id based on Lookup of {{ subnet_name }}"
+      ansible.builtin.set_fact:
+        vpc_subnet_id: "{{ subnet_id.subnets[0].id }}"
+
+    - name: Show Subnet_id
+      ansible.builtin.debug:
+        msg: "{{ vpc_subnet_id }}"
+
+    - name: Printing out the IMDSv1 setting (http_tokens)
+      when: instance_info.instances[0].instance_id is defined
+      ansible.builtin.debug:
+        msg: "{{ servername }} IMDSv2 is {{ instance_info.instances[0].metadata_options.http_tokens }}"
+
+    - name: "Creating AWS VMs in {{ region }}"
+      register: instance
+      amazon.aws.ec2_instance:
+        name: "{{ servername }}"
+        state: running
+        region: "{{ region }}"
+        key_name: "{{ my_ssh_key }}"
+        vpc_subnet_id: "{{ vpc_subnet_id }}"
+        instance_type: "{{ instance_type }}"
+        security_group: "{{ ec2_security_group_name }}"
+        network:
+          assign_public_ip: "{{ assign_public_ip }}"
+        image_id: "{{ image }}"
+        tags:
+          Environment: windows-dailydemo
+          AlwaysUp: "{{ alwaysup }}"
+          Createdby: Ansible Controller
+          Contact: "{{ my_email_address }}"
+          DeletebBy: "{{ ec2_ansible_group }}"
+          info: "This instance was built by the Sales Team"
+        user_data: "{{ lookup('template', 'scripts/aws_userdata') }}"
+        wait: true
+        wait_timeout: 600
+        metadata_options:
+          http_tokens: "{{ http_tokens_value }}"
+
+    - name: Printing out the IMDSv1 setting (http_tokens)
+      when: instance_info.instances[0].instance_id is defined
+      ansible.builtin.debug:
+        msg: "{{ servername }} IMDSv2 is {{ instance_info.instances[0].metadata_options.http_tokens }}"
+
+    # - name: "The instance variable = {{ instance }}"
+    #   ansible.builtin.debug:
+    #     msg: "{{ instance }}"
+
+    - name: Wait 300 seconds for port 5986 to become open
+      loop: "{{ instance['instances'] }}"
+      ansible.builtin.wait_for:
+        port: 5986
+        host: "{{ item['public_ip_address'] }}"
+        delay: 10
+        timeout: 300
+
+  rescue:
+
+    - name: Capture the error message
+      register: my_error
+      ansible.builtin.set_stats:
+        data:
+          my_error: "{{ ansible_failed_result.msg }}"
+
+    - name: Capture the Job ID
+      register: my_job_id
+      ansible.builtin.set_stats:
+        data:
+          my_job_id: "{{ tower_job_id }}"
+
+    - name: Capture the Job Template name
+      register: my_job_template_name
+      ansible.builtin.set_stats:
+        data:
+          my_job_template_name: "{{ tower_job_template_name }}"
+
+    - name: Fail the job even though the rescue worked
+      ansible.builtin.fail:
+        msg: failing so we create the incident ticket
