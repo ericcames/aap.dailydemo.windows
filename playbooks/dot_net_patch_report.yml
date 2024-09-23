@@ -1,6 +1,6 @@
 ---
 - name: Dot Net patch report
-  hosts: localhost
+  hosts: windemo
 
   roles:
 
