@@ -1,0 +1,19 @@
+---
+- name: Create the devops directory structure
+  ansible.windows.win_file:
+    path: 'c:\Users\devops'
+    state: directory
+
+- name: Copy the powershell patch report script into place
+  ansible.windows.win_copy:
+    src: scripts/powershell_performance
+    dest: 'c:\Users\devops\patch_report'
+
+- name: Run PowerShell patch report script
+  register: my_patch_report
+  ansible.windows.win_powershell:
+    script: 'c:\Users\devops\patch_report'
+
+- name: Print out patch_report
+  ansible.builtin.debug:
+    var: my_patch_report

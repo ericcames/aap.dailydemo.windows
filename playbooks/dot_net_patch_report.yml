@@ -1,0 +1,7 @@
+---
+- name: Dot Net patch report
+  hosts: localhost
+
+  roles:
+
+    - role: dot_net_patch_info
