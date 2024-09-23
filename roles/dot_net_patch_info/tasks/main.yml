@@ -10,10 +10,13 @@
     dest: 'c:\Users\devops\patch_report'
 
 - name: Run PowerShell patch report script
-  register: my_patch_report
   ansible.windows.win_powershell:
     script: 'c:\Users\devops\patch_report'
 
-- name: Print out patch_report
+- name: Get file content
+  register: my_content
+  ansible.windows.win_shell: 'type C:\Users\devops\ScriptLog.txt'
+
+- name: Print file content
   ansible.builtin.debug:
-    var: my_patch_report
+    msg: "{{ my_content.stdout_lines }}"
