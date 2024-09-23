@@ -26,12 +26,12 @@
       ansible.builtin.debug:
         msg: "{{ vpc_subnet_id }}"
 
-    - name: Printing out the IMDSv1 setting (http_tokens)
+    - name: Printing out the current IMDSv1 setting (http_tokens)
       when: instance_info.instances[0].instance_id is defined
       ansible.builtin.debug:
         msg: "{{ servername }} IMDSv2 is {{ instance_info.instances[0].metadata_options.http_tokens }}"
 
-    - name: "Creating AWS VMs in {{ region }}"
+    - name: Updating the IMDS setting
       register: instance
       amazon.aws.ec2_instance:
         name: "{{ servername }}"
@@ -57,10 +57,19 @@
         metadata_options:
           http_tokens: "{{ http_tokens_value }}"
 
-    - name: Printing out the IMDSv1 setting (http_tokens)
+    - name: Get instances id with tag
+      register: instance_info_post_change
+      amazon.aws.ec2_instance_info:
+        region: "{{ region }}"
+        filters:
+          "tag:Name": "{{ servername }}"
+          instance-state-name: ["running"]
+          "tag:Contact": "{{ my_email_address }}"
+
+    - name: Printing out the new IMDSv1 setting (http_tokens)
       when: instance_info.instances[0].instance_id is defined
       ansible.builtin.debug:
-        msg: "{{ servername }} IMDSv2 is {{ instance_info.instances[0].metadata_options.http_tokens }}"
+        msg: "{{ servername }} IMDSv2 is {{ instance_info_post_change.instances[0].metadata_options.http_tokens }}"
 
     # - name: "The instance variable = {{ instance }}"
     #   ansible.builtin.debug:
