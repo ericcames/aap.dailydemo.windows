@@ -11,12 +11,4 @@
 
 - name: Run PowerShell patch report script
   ansible.windows.win_powershell:
-    script: 'c:\Users\devops\patch_report | Out-File -FilePath c:\Users\devops\patch_report.log'
-
-- name: Get file content
-  register: my_content
-  ansible.windows.win_shell: 'type C:\Users\devops\patch_report.log'
-
-- name: Print file content
-  ansible.builtin.debug:
-    msg: "{{ my_content.stdout_lines }}"
+    script: 'c:\Users\devops\patch_report'
