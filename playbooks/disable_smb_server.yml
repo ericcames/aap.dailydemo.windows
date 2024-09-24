@@ -4,4 +4,4 @@
 
   roles:
 
-    - role: disable_smb1
+    - role: disable_smb_server

@@ -1,4 +1,4 @@
-disable_smb1
+disable_smb_server
 =========
 ```
 disable the SMB Server Configuration
@@ -27,7 +27,7 @@ Example Playbook
 
   roles:
 
-    - role: disable_smb1
+    - role: disable_smb_server
 ```
 License
 -------
