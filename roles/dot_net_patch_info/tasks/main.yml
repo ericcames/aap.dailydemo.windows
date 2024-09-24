@@ -1,14 +1,15 @@
 ---
-- name: Create the devops directory structure
-  ansible.windows.win_file:
-    path: 'c:\Users\devops'
-    state: directory
-
-- name: Copy the powershell patch report script into place
-  ansible.windows.win_copy:
-    src: scripts/patch_report
-    dest: 'c:\Users\devops\patch_report'
-
 - name: Run PowerShell patch report script
   ansible.windows.win_powershell:
-    script: 'c:\Users\devops\patch_report'
+    script: |
+      $DotNetVersions = Get-ChildItem HKLM:\SOFTWARE\WOW6432Node\Microsoft\Updates | Where-Object {$_.name -like
+        "*.NET Framework*"}
+
+      ForEach($Version in $DotNetVersions){
+
+      $Updates = Get-ChildItem $Version.PSPath
+          $Version.PSChildName
+          ForEach ($Update in $Updates){
+              $Update.PSChildName
+              }
+      }
