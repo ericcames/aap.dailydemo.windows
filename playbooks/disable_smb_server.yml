@@ -1,0 +1,7 @@
+---
+- name: Disable the SMB Server
+  hosts: windemo
+
+  roles:
+
+    - role: disable_smb1
