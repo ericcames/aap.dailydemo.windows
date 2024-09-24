@@ -1,0 +1,7 @@
+---
+- name: Check the SMB Server Configuration
+  hosts: windemo
+
+  roles:
+
+    - role: check_smb1
