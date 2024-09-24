@@ -28,5 +28,8 @@ $Password = ConvertTo-SecureString {{ ansible_password }} -AsPlainText -Force
 New-LocalUser -Name "ec2-user" -Description "Ansible Service Account" -Password $Password
 Add-LocalGroupMember -Group "Administrators" -Member "ec2-user"
 
+# Enable Samba Server
+Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
+
 #Rename-Computer -NewName mywindowsserver -Force -Restart
 </powershell>
