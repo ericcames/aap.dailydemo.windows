@@ -3,7 +3,7 @@
   register: my_output
   ansible.windows.win_powershell:
     script: |
-      Set-SmbServerConfiguration -EnableSMB1Protocol $false
+      Set-SmbServerConfiguration -EnableSMB1Protocol $false -Confirm:$false
 
 - name: Print the SMB Server Configuration
   ansible.builtin.debug:
