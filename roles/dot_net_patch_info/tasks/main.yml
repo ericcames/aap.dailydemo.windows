@@ -1,5 +1,7 @@
 ---
 - name: Run PowerShell patch report script
+  register: my_output
+  changed_when: false
   ansible.windows.win_powershell:
     script: |
       $DotNetVersions = Get-ChildItem HKLM:\SOFTWARE\WOW6432Node\Microsoft\Updates | Where-Object {$_.name -like
@@ -13,3 +15,7 @@
               $Update.PSChildName
               }
       }
+
+- name: Microsoft .Net Patches
+  ansible.builtin.debug:
+    msg: "{{ my_output.output }}"
