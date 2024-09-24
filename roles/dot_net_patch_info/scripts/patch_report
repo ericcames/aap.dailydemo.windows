@@ -1,5 +1,3 @@
-Add-Content -Path "c:\Users\devops\ScriptLog.txt" -Value "Script has started at $(Get-Date)"
-
 $DotNetVersions = Get-ChildItem HKLM:\SOFTWARE\WOW6432Node\Microsoft\Updates | Where-Object {$_.name -like
   "*.NET Framework*"}
 
@@ -11,5 +9,3 @@ $DotNetVersions = Get-ChildItem HKLM:\SOFTWARE\WOW6432Node\Microsoft\Updates | W
         $Update.PSChildName
         }
  }
-
- Add-Content -Path "c:\Users\devops\ScriptLog.txt" -Value "Script has started at $(Get-Date)"
