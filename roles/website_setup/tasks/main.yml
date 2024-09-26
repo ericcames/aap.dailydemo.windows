@@ -5,7 +5,7 @@
     state: present
 
 - name: Delete default IIS website
-  ansible.builtin.win_iis_website:
+  community.windows.win_iis_website:
     name: "Default Web Site"
     state: absent
 
