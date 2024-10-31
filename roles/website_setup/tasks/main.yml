@@ -38,18 +38,18 @@
 - name: Template simple web site to iis_site_path as index.html
   ansible.windows.win_template:
     src: 'index.html.j2'
-    dest: C:\inetpub\wwwroot\index.html'
+    dest: C:\inetpub\wwwroot\index.html
 
 - name: Copy a single file
   ansible.windows.win_copy:
     src: images/aap.png
-    dest: C:\inetpub\wwwroot\aap.png"
+    dest: C:\inetpub\wwwroot\aap.png
 
 - name: Copy a single file
   with_items: "{{ iis_sites }}"
   ansible.windows.win_copy:
     src: images/AmesQNRCode.png
-    dest: C:\inetpub\wwwroot\AmesQNRCode.png"
+    dest: C:\inetpub\wwwroot\AmesQNRCode.png
 
 - name: Show website addresses
   loop:
