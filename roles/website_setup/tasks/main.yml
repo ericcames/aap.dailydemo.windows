@@ -1,12 +1,13 @@
 ---
 - name: Install IIS Webserver
+  register: win_feature
   ansible.windows.win_feature:
     name: Web-Server
     state: present
 
 - name: Reboot if installing Web-Server feature requires it
-  ansible.windows.win_reboot:
   when: win_feature.reboot_required
+  ansible.windows.win_reboot:
 
 - name: Template simple web site to iis_site_path as index.html
   ansible.windows.win_template:
