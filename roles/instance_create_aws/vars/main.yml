@@ -2,7 +2,7 @@
 vpc_name: windows-dailydemo
 user_name: eric.ames
 subnet_name: "{{ vpc_name }}_Subnet"
-image: ami-076099045df96e471
+image: ami-00bedb8509ebcc120
 count: 1
 region: us-west-1
 assign_public_ip: true
