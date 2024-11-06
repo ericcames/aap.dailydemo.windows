@@ -32,4 +32,9 @@ Add-LocalGroupMember -Group "Administrators" -Member "ec2-user"
 Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 
 #Rename-Computer -NewName mywindowsserver -Force -Restart
+
+winrm set winrm/config/service @{MaxConcurrentOperationsPerUser="15"}
+winrm set winrm/config @{MaxTimeoutms="1800000"}
+winrm set winrm/config/winrs @{MaxProcessesPerShell="15"}
+winrm set winrm/config/winrs @{MaxShellsPerUser="10"}
 </powershell>
