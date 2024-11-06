@@ -8,3 +8,4 @@ sales_email_id: mickey
 tech_email_id: goofy
 sales_person_name: "Mickey Mouse"
 tech_person_name: "Goofy"
+ansible_python_interpreter: /usr/bin/python3
