@@ -9,6 +9,13 @@
   when: win_feature.reboot_required
   ansible.windows.win_reboot:
 
+- name: Wait 300 seconds for port 5986 to become open
+  ansible.builtin.wait_for:
+    port: 5986
+    host: "{{ inventory_hostname }}"
+    delay: 10
+    timeout: 300
+
 - name: Template simple web site to iis_site_path as index.html
   ansible.windows.win_template:
     src: 'index.html.j2'
