@@ -63,10 +63,7 @@
       ansible_winrm_transport: credssp
       ansible_winrm_server_cert_validation: ignore
       ansible_port: 5986
-      ansible_winrm_retries: 5
       ansible_winrm_operation_timeout_sec: 60
-      ansible_winrm_disable_keep_alive: true
-
 
 - name: Update runtime inventory
   loop: "{{ instance_info['instances'] }}"
