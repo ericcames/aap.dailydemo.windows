@@ -1,4 +1,10 @@
 ---
+# One way to ensure the system is reliable, is to set WinRM to a delayed startup
+- name: Ensure WinRM starts when the system has settled and is ready to work reliably
+  ansible.windows.win_service:
+    name: WinRM
+    start_mode: delayed
+
 - name: Install IIS Webserver
   register: win_feature
   ansible.windows.win_feature:
@@ -8,6 +14,7 @@
 - name: Reboot if installing Web-Server feature requires it
   when: win_feature.reboot_required
   ansible.windows.win_reboot:
+    post_reboot_delay: 60
 
 - name: Wait 300 seconds for port 5986 to become open
   ansible.builtin.wait_for:
