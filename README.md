@@ -182,9 +182,6 @@ OAuth Redirect URL: https://ven05433.service-now.com/api/sn_ansible_spoke/ansibl
 
 - [AAP Daily Demo Windows](https://youtu.be/RNwel6BeCVI?si=ruIwcDFp6dyyAkjO "AAP Daily Demo Windows")
 
-# Looking for the Linux Daily Demo?
-
-- [AAP Daily Demo Linux](https://github.com/ericcames/aap.dailydemo.linux "AAP Daily Demo Linux")
 
 # Important Note
 The user_data line in the task listed below is designed to work with a template to set the password on the machine as it is built.  It works with a machine credential in the ansible automation platform.
@@ -241,3 +238,11 @@ win_shell -> Start-Service sshd
 win_shell -> Set-Service -Name sshd -StartupType ‘Automatic’
 win_service -> name=sshd
 ```
+Looking for other Daily Demos?
+=========
+
+- [AAP Daily Demo Windows](https://github.com/ericcames/aap.dailydemo.windows "AAP Daily Demo Windows")
+- [AAP Daily Demo Linux](https://github.com/ericcames/aap.dailydemo.linux "AAP Daily Demo Linux")
+- [AAP Daily Demo F5](https://github.com/ericcames/aap.dailydemo.F5 "AAP Daily Demo F5")
+- [AAP Daily Demo Panos](https://github.com/ericcames/aap.dailydemo.Panos "AAP Daily Demo Panos")
+- [AAP Daily Demo Satellite](https://github.com/ericcames/aap.dailydemo.satellite "AAP Daily Demo Satellite")
