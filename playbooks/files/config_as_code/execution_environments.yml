@@ -1,0 +1,6 @@
+---
+controller_execution_environments:
+  - name: windows workshop execution environment
+    image: quay.io/acme_corp/windows_ee:latest
+    pull: missing
+    organization: "{{ my_organization }}"
