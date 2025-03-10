@@ -1,4 +1,24 @@
 ---
+- name: Stuff we are always going to do
+  tags:
+    - always
+  block:
+
+    - name: Share vm_name with other steps in the workflow
+      ansible.builtin.set_stats:
+        data:
+          vpc_name: "{{ vpc_name }}"
+
+    - name: Share vm_region with other steps in the workflow
+      ansible.builtin.set_stats:
+        data:
+          vpc_region: "{{ vpc_region }}"
+
+    - name: Share vm_my_email_address with other steps in the workflow
+      ansible.builtin.set_stats:
+        data:
+          vpc_my_email_address: "{{ vpc_my_email_address }}"
+
 - name: Creating a network container at Amazon
   tags:
     - create
