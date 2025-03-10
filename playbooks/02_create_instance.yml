@@ -1,0 +1,11 @@
+- name: Creating a vm
+  hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Include the vm role
+      tags:
+        - create
+      ansible.builtin.include_role:
+        name: vm

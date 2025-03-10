@@ -14,3 +14,6 @@ vpc_my_email_address: "{{ vpc_user_name }}@redhat.com"
 # This variable is set here and used in website_setup
 vpc_create_time: ''
 ansible_python_interpreter: /usr/bin/python3
+#
+# Credential Types needed for this role
+# Amazon Web Services

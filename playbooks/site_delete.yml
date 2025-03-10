@@ -1,12 +1,24 @@
 ---
-- name: Delete aap daily demo windows server
+- name: Deleting the daily demo server
   hosts: localhost
   connection: local
 
   tasks:
+
+    - name: Include the vm role
+      tags:
+        - remove
+      ansible.builtin.include_role:
+        name: vm
 
     - name: Include the vpc role
       tags:
         - remove
       ansible.builtin.include_role:
         name: vpc
+
+    - name: Include the inventory role
+      tags:
+        - remove
+      ansible.builtin.include_role:
+        name: inventory
