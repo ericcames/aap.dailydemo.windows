@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: windows_patching
+  author: Eric Ames (ericcames)
+  description: A role that patches a windows server
+  license: MIT License
+  min_ansible_version: "2.16"
