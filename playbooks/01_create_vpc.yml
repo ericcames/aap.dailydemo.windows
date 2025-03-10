@@ -1,5 +1,5 @@
 ---
-- name: Delete aap daily demo windows server
+- name: Creating a vpc
   hosts: localhost
   connection: local
 
@@ -7,6 +7,6 @@
 
     - name: Include the vpc role
       tags:
-        - remove
+        - create
       ansible.builtin.include_role:
         name: vpc
