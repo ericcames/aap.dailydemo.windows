@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: auditme
+  author: Eric Ames (ericcames)
+  description: A role that conducts a simple audit on a windows server
+  license: MIT License
+  min_ansible_version: "2.16"

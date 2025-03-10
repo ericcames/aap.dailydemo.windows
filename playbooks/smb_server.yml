@@ -1,0 +1,17 @@
+---
+- name: Check the SMB Server Configuration
+  hosts: windemo
+
+  tasks:
+
+    - name: Include the smb_server role
+      tags:
+        - check
+      ansible.builtin.include_role:
+        name: smb_server
+
+    - name: Include the smb_server role
+      tags:
+        - disable
+      ansible.builtin.include_role:
+        name: smb_server

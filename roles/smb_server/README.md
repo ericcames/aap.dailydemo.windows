@@ -1,4 +1,4 @@
-check_smb1
+smb_server
 =========
 ```
 Check the SMB Server Configuration
@@ -25,9 +25,28 @@ Example Playbook
   hosts: windemo
   connection: local
 
-  roles:
+  tasks:
 
-    - role: check_smb1
+    - name: Include the smb_server role
+      tags:
+        - check
+      ansible.builtin.include_role:
+        name: smb_server
+
+or
+
+---
+- name: Disable the samba server
+  hosts: windemo
+  connection: local
+
+  tasks:
+
+    - name: Include the smb_server role
+      tags:
+        - disable
+      ansible.builtin.include_role:
+        name: smb_server
 ```
 License
 -------
