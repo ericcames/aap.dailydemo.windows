@@ -11,8 +11,8 @@ Administrator access on the machines in the inventory
 Role Variables
 --------------
 ```
-reboot_server: Yes
-categories:
+windows_patching_reboot_server: false
+windows_patching_categories:
   - Application
   - Connectors
   - CriticalUpdates

@@ -1,6 +1,6 @@
 - name: Include our user info
   ansible.builtin.include_vars:
-    file: files/{{ windows_account_create_user_list_vault }}
+    file: files/users.yml
 
 - name: Relax password complexity requirements
   community.windows.win_security_policy:

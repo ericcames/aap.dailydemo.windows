@@ -35,7 +35,7 @@ Example Playbook
 ----------------
 ```
 ---
-- name: Create our F5 daily demo
+- name: Create our vpc
   hosts: localhost
   connection: local
 
@@ -50,7 +50,7 @@ Example Playbook
 or
 
 ---
-- name: Remove our F5 daily demo
+- name: Remove our vpc
   hosts: localhost
   connection: local
 

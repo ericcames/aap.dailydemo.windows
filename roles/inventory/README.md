@@ -12,13 +12,11 @@ Role Variables
 --------------
 ```
 inventory_name: AAP Managed Inventory
+ansible_python_interpreter: /usr/bin/python3
 #
-# These variables are set in the vm role
-# vm_name: Linux Daily Demo
-# vm_region: us-west-1
-#
-# Set these variables in the job template extra vars
-# ansible_python_interpreter: /usr/bin/python3
+# These variables are set in their role
+# vm_name: ''
+# vpc_region: ''
 #
 # Credential Types needed for this role
 # Amazon Web Services
@@ -39,7 +37,7 @@ Example Playbook
 
     - name: Include the inventory role
       tags:
-        - inventoryadd
+        - create
       ansible.builtin.include_role:
         name: inventory
 
@@ -54,7 +52,7 @@ or
 
     - name: Include the vm role
       tags:
-        - inventorydel
+        - remove
       ansible.builtin.include_role:
         name: inventory
 ```

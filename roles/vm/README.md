@@ -12,14 +12,13 @@ Amazon Web Services Credential in Ansible Automation Platform
 Role Variables
 --------------
 ```
-vm_name: Linux Daily Demo
-vm_environment_tag: linux-dailydemo
-vm_vpc_name: satellite-dailydemo
-vm_user_name: eric.ames
+vm_environment_tag: windows-dailydemo
+vm_vpc_name: "{{ vpc_name }}"
+vm_user_name: "{{ vpc_user_name }}"
 vm_subnet_name: "{{ vm_vpc_name }}_Subnet"
-vm_image: ami-054f77471c0e69deb
+vm_image: ami-0650dc5218bb7d5e8
 vm_count: 1
-vm_region: us-west-1
+vm_region: "{{ vpc_region }}"
 vm_assign_public_ip: true
 vm_alwaysup: false
 vm_instance_type: m5.xlarge
@@ -27,14 +26,14 @@ vm_ec2_security_group_name: "{{ vm_vpc_name }}_SECGRP"
 vm_ec2_ansible_group: "{{ vm_user_name }}"
 vm_my_email_address: "{{ vm_user_name }}@redhat.com"
 vm_my_ssh_key: zigfreed-ssh-key
+ansible_python_interpreter: /usr/bin/python3
 #
+# These variables are used in the inventory role
+vm_name: Windows Daily Demo
 # These variables are used in the create_incident role
 vm_my_error: ''
 vm_my_job_id: ''
 vm_my_job_template_name: ''
-#
-# Set these variables in the job template extra vars
-# ansible_python_interpreter: /usr/bin/python3
 #
 # This variable is used in the website_setup role
 vm_machine_create_time: ''
@@ -44,10 +43,6 @@ vm_machine_create_time: ''
 ```
 Dependencies
 ------------
-Satellite Infrastructure. This vm will be provisioned in the satellite-dailydemo vpc.  It will also be register with the Satellite server.
-
-Collection used to build the Satellite server.
-ericcames.satellite_dailydemo
 
 Example Playbook
 ----------------

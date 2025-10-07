@@ -1,7 +1,7 @@
 ---
-iis_sites:
-  - name: 'AnsibleDemo'
-    port: '80'
-    path: 'C:\sites\dailydemo'
-iis_test_message: "This website is running on Microsoft Windows Server 2022 Datacenter"
+# iis_sites:
+#   - name: 'AnsibleDemo'
+#     port: '80'
+#     path: 'C:\sites\dailydemo'
+website_setup_message: "This website is running on Microsoft Windows Server 2022 Datacenter"
 ansible_python_interpreter: /usr/bin/python3
