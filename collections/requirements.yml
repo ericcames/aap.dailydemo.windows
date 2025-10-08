@@ -1,26 +1,26 @@
 ---
 collections:
   - name: amazon.aws
-    version: 7.2.0
+    version: 10.1.2
   - name: ansible.windows
-    version: 2.3.0
+    version: 3.2.0
   - name: ansible.posix
-    version: 1.6.2
-  - name: ansible.utils
-    version: 5.1.2
-  - name: ansible.platform
-    version: 2.5.3
-  - name: ansible.hub
-    version: 1.0.0
-  - name: ansible.controller
-    version: 4.6.2
-  - name: ansible.eda
-    version: 2.2.0
-  - name: infra.aap_configuration
-    version: 3.1.0
-  - name: servicenow.itsm
-    version: 2.4.0
-  - name: community.general
-    version: 8.1.0
-  - name: community.windows
     version: 2.1.0
+  - name: ansible.utils
+    version: 6.0.0
+  - name: ansible.platform
+    version: 2.6.20250924
+  - name: ansible.hub
+    version: 1.0.2
+  - name: ansible.controller
+    version: 4.7.1
+  - name: ansible.eda
+    version: 2.10.0
+  - name: infra.aap_configuration
+    version: 3.8.0
+  - name: servicenow.itsm
+    version: 2.13.0
+  - name: community.general
+    version: 11.4.0
+  - name: community.windows
+    version: 3.0.1
