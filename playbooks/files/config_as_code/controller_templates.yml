@@ -14,3 +14,14 @@ controller_templates:
       - "{{ my_aws_credential }}"
     extra_vars:
       ansible_python_interpreter: /usr/bin/python3
+
+  - name: DDW - Network Create
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/01_create_vpc.yml
+    job_tags: create
+    credentials:
+      - "{{ my_aws_credential }}"
