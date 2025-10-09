@@ -259,3 +259,18 @@ controller_templates:
     credentials:
       - Daily Demo Windows
       - "{{ my_aws_credential }}"
+    survey_enabled: true
+    survey_spec:
+      name: ""
+      description: ""
+      spec:
+        - name: http_tokens_value
+          type: singleselect
+          question_name: IMDSv2 required or optional?
+          question_description: Is IMDSv2 required or optional?
+          variable: http_tokens_value
+          required: true
+          default: required
+          choices:
+            - required
+            - optional
