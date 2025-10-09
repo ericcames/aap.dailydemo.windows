@@ -5,11 +5,11 @@
 
   tasks:
 
-    # - name: Include the vm role
-    #   tags:
-    #     - remove
-    #   ansible.builtin.include_role:
-    #     name: vm
+    - name: Include the vm role
+      tags:
+        - remove
+      ansible.builtin.include_role:
+        name: vm
 
     - name: Include the vpc role
       tags:
@@ -17,8 +17,8 @@
       ansible.builtin.include_role:
         name: vpc
 
-    # - name: Include the inventory role
-    #   tags:
-    #     - remove
-    #   ansible.builtin.include_role:
-    #     name: inventory
+    - name: Include the inventory role
+      tags:
+        - remove
+      ansible.builtin.include_role:
+        name: inventory
