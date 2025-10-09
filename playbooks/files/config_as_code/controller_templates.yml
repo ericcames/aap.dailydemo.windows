@@ -92,8 +92,8 @@ controller_templates:
     credentials:
       - ServiceNow ITSM Credential
     extra_vars:
-      requested_item_comments: "Provisioning details\n\nVPC Create Time: \\{\\{ vpc_create_time \\}\\}\n\nMachine Create Time: \\{\\{ machine_create_time \\}\\} \n\nRedHat Subscription Time: \\{\\{ subscription_time \\}\\}\n\nPost Install Time: \\{\\{ post_install_time \\}\\}\n\nWebsite Start Time: \\{\\{ lamp_time \\}\\}\n\nPublic DNS Name: \\{\\{ my_server \\}\\} \n\nPublic IP Address: \\{\\{ my_public_ip \\}\\}\n\nAWS AMI ID: \\{\\{ my_ami_id }}\n\nAWS Instance ID: \\{\\{ my_instance_id \\}\\}\n\nAWS Instance Type: \\{\\{ my_instance_type \\}\\} \n\nAWS availability zone: \\{\\{ my_availability_zone \\}\\}"
-      requested_item_state: "3"
+      update_requested_item_comments: "Provisioning details\n\nVPC Create Time: \\{\\{ vpc_create_time \\}\\}\n\nMachine Create Time: \\{\\{ machine_create_time \\}\\} \n\nRedHat Subscription Time: \\{\\{ subscription_time \\}\\}\n\nPost Install Time: \\{\\{ post_install_time \\}\\}\n\nWebsite Start Time: \\{\\{ lamp_time \\}\\}\n\nPublic DNS Name: \\{\\{ my_server \\}\\} \n\nPublic IP Address: \\{\\{ my_public_ip \\}\\}\n\nAWS AMI ID: \\{\\{ my_ami_id }}\n\nAWS Instance ID: \\{\\{ my_instance_id \\}\\}\n\nAWS Instance Type: \\{\\{ my_instance_type \\}\\} \n\nAWS availability zone: \\{\\{ my_availability_zone \\}\\}"
+      update_requested_item_state: "3"
 
   - name: DDW - Update request ticket - failure
     job_type: run
@@ -105,8 +105,8 @@ controller_templates:
     credentials:
       - ServiceNow ITSM Credential
     extra_vars:
-      requested_item_comments: "Uh-Oh something broke.\n\nServiceNow incident number: \\{\\{ incident_ticket '\\}\\}\n\nAnsible Job ID: \\{\\{ my_job_id \\}\\}\n\nMessage: \\{\\{ my_error \\}\\}"
-      requested_item_state: "4"
+      update_requested_item_comments: "Uh-Oh something broke.\n\nServiceNow incident number: \\{\\{ incident_ticket '\\}\\}\n\nAnsible Job ID: \\{\\{ my_job_id \\}\\}\n\nMessage: \\{\\{ my_error \\}\\}"
+      update_requested_item_state: "4"
 
   - name: DDW - Provision Access
     job_type: run
@@ -118,6 +118,18 @@ controller_templates:
     credentials:
       - Daily Demo Windows
       - "{{ my_vault }}"
+    survey_enabled: true
+    survey_spec:
+      name: ""
+      description: ""
+      spec:
+        - name: Default password
+          type: password
+          question_name: What is your default password?
+          question_description: ''
+          variable: default_passwd
+          required: true
+          default: "{{ default_passwd }}"
 
   - name: DDW - Powershell Improvement
     job_type: run
