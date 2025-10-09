@@ -92,7 +92,14 @@ controller_templates:
     credentials:
       - ServiceNow ITSM Credential
     extra_vars:
-      update_requested_item_comments: "Provisioning details\n\nVPC Create Time: \\{\\{ vpc_create_time \\}\\}\n\nMachine Create Time: \\{\\{ machine_create_time \\}\\} \n\nRedHat Subscription Time: \\{\\{ subscription_time \\}\\}\n\nPost Install Time: \\{\\{ post_install_time \\}\\}\n\nWebsite Start Time: \\{\\{ lamp_time \\}\\}\n\nPublic DNS Name: \\{\\{ my_server \\}\\} \n\nPublic IP Address: \\{\\{ my_public_ip \\}\\}\n\nAWS AMI ID: \\{\\{ my_ami_id }}\n\nAWS Instance ID: \\{\\{ my_instance_id \\}\\}\n\nAWS Instance Type: \\{\\{ my_instance_type \\}\\} \n\nAWS availability zone: \\{\\{ my_availability_zone \\}\\}"
+      update_requested_item_comments: !unsafe "Provisioning details\n
+                                              Machine Create Time: {{ vm_machine_create_time }}\n
+                                              Public DNS Name: {{ my_server }}\n
+                                              Public IP Address: {{ my_public_ip }}\n
+                                              AWS AMI ID: {{ my_ami_id }}\n
+                                              AWS Instance ID: {{ my_instance_id }}\n
+                                              AWS Instance Type: {{ my_instance_type }}\n
+                                              AWS availability zone: {{ my_availability_zone }}"
       update_requested_item_state: "3"
 
   - name: DDW - Update request ticket - failure
@@ -105,7 +112,10 @@ controller_templates:
     credentials:
       - ServiceNow ITSM Credential
     extra_vars:
-      update_requested_item_comments: "Uh-Oh something broke.\n\nServiceNow incident number: \\{\\{ incident_ticket '\\}\\}\n\nAnsible Job ID: \\{\\{ my_job_id \\}\\}\n\nMessage: \\{\\{ my_error \\}\\}"
+      update_requested_item_comments: !unsafe "Uh-Oh something broke.\n
+                                              ServiceNow incident number: {{ create_incident_ticket }}\n
+                                              Ansible Job ID: {{ vm_my_job_id }}\n
+                                              Message: {{ vm_my_error }}"
       update_requested_item_state: "4"
 
   - name: DDW - Provision Access
