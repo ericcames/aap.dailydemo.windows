@@ -249,15 +249,13 @@ controller_templates:
     credentials:
       - Daily Demo Windows
 
-  # - name: Windows Day 2 - Update IMDSv2
-  #   job_type: run
-  #   inventory: AAP Managed Inventory
-  #   organization: "{{ my_organization }}"
-  #   execution_environment: windows workshop execution environment
-  #   project: aap.dailydemo.windows
-  #   playbook: playbooks/update_IMDSv2.yml
-  #   credentials:
-  #     - Daily Demo Windows
-  #     - "{{ my_aws_credential }}"
-  #   survey_enabled: true
-  #   survey: "{{ lookup('template', 'template_surveys/imdsv2.json') | regex_replace('\\n', '') }}"
+  - name: Windows Day 2 - Update IMDSv2
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: windows workshop execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/update_IMDSv2.yml
+    credentials:
+      - Daily Demo Windows
+      - "{{ my_aws_credential }}"
