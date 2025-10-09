@@ -49,6 +49,7 @@ controller_templates:
       - ServiceNow ITSM Credential
     extra_vars:
       caller_name: "{{ my_snow_caller_name }}"
+      create_incident_caller_name: "{{ my_snow_caller_name }}"
 
   - name: DDW - Get Instance Info
     job_type: run
