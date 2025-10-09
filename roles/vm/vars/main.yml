@@ -12,7 +12,7 @@ vm_instance_type: m5.xlarge
 vm_ec2_security_group_name: "{{ vm_vpc_name }}_SECGRP"
 vm_ec2_ansible_group: "{{ vm_user_name }}"
 vm_my_email_address: "{{ vm_user_name }}@redhat.com"
-vm_my_ssh_key: zigfreed-ssh-key
+vm_my_ssh_key: my_public_ssh_key
 ansible_python_interpreter: /usr/bin/python3
 #
 # These variables are used in the inventory role

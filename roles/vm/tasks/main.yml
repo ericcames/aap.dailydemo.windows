@@ -26,6 +26,17 @@
         data:
           vm_machine_create_time: "{{ machine_create_time_raw.stdout }}"
 
+    - name: Grab my public ssh key from remote url
+      ansible.builtin.get_url:
+        url: '{{ my_remote_ssh_pub_key }}'
+        dest: files/id_rsa.pub
+        mode: '0644'
+
+    - name: create key pair using key_material obtained using 'file' lookup plugin
+      amazon.aws.ec2_key:
+        name: "{{ vm_my_ssh_key }}"
+        key_material: "{{ lookup('file', '/files/id_rsa.pub') }}"
+
     - name: Looking up Subnet_id
       register: subnet_id
       amazon.aws.ec2_vpc_subnet_info:
@@ -63,7 +74,7 @@
         wait_timeout: 600
 
     - name: Wait 300 seconds for port 5986 to become open
-      loop: "{{ instance['instances'] }}"
+      loop: "{{ ec2_vms['instances'] }}"
       ansible.builtin.wait_for:
         port: 5986
         host: "{{ item['public_ip_address'] }}"
