@@ -2,7 +2,7 @@
 - name: Create a configuration item
   register: server_info
   servicenow.itsm.configuration_item:
-    name: "{{ get_instance_info_server }}"
+    name: "{{ my_server }}"
     state: present
     short_description: "{{ create_configuration_item_short_description }}"
     serial_number: "{{ get_instance_info_instance_id }}"
