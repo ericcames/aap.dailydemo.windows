@@ -1,5 +1,5 @@
 ---
-create_configuration_item_sys_class_name: cmdb_ci_windows_server
+create_configuration_item_sys_class_name: cmdb_ci_win_server
 create_configuration_item_environment: production
 create_configuration_item_install_status: installed
 create_configuration_item_category: Hardware
