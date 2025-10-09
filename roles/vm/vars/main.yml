@@ -1,5 +1,6 @@
 ---
 vpc_region: us-west-1
+vpc_user_name: eric.ames
 vm_environment_tag: windows-dailydemo
 vm_vpc_name: "{{ vpc_name }}"
 vm_user_name: "{{ vpc_user_name }}"
