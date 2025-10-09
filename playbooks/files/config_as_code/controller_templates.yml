@@ -64,7 +64,7 @@ controller_templates:
     job_type: run
     inventory: AAP Managed Inventory
     organization: "{{ my_organization }}"
-    execution_environment: Default execution environment
+    execution_environment: amazon_aws_ee
     project: aap.dailydemo.windows
     playbook: playbooks/03_create_inventory.yml
     job_tags: create
