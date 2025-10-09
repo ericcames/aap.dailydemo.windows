@@ -37,6 +37,8 @@ controller_templates:
     credentials:
       - "{{ my_aws_credential }}"
       - Daily Demo Windows
+    extra_vars:
+      my_remote_ssh_pub_key: "{{ my_remote_ssh_pub_key }}"
 
   - name: DDW - Create Incident
     job_type: run
