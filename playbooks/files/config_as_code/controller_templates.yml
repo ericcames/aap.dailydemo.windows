@@ -49,3 +49,170 @@ controller_templates:
       - ServiceNow ITSM Credential
     extra_vars:
       caller_name: "{{ my_snow_caller_name }}"
+
+  - name: DDW - Get Instance Info
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: amazon_aws_ee
+    project: aap.dailydemo.windows
+    playbook: playbooks/04_get_instance_info.yml
+    credentials:
+      - "{{ my_aws_credential }}"
+    extra_vars:
+      user_name: "{{ my_username }}"
+
+  - name: DDW - Inventory Update
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/03_create_inventory.yml
+    job_tags: create
+    credentials:
+      - "{{ my_aws_credential }}"
+      - "{{ my_aap_credential }}"
+
+  - name: DDW - Website Setup
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/06_website_setup.yml
+    credentials:
+      - Daily Demo Windows
+
+  - name: DDW - Update request ticket - success
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/servicenow/update_sn_req_itm.yml
+    credentials:
+      - ServiceNow ITSM Credential
+    extra_vars:
+      requested_item_comments: "Provisioning details\n\nVPC Create Time: \\{\\{ vpc_create_time \\}\\}\n\nMachine Create Time: \\{\\{ machine_create_time \\}\\} \n\nRedHat Subscription Time: \\{\\{ subscription_time \\}\\}\n\nPost Install Time: \\{\\{ post_install_time \\}\\}\n\nWebsite Start Time: \\{\\{ lamp_time \\}\\}\n\nPublic DNS Name: \\{\\{ my_server \\}\\} \n\nPublic IP Address: \\{\\{ my_public_ip \\}\\}\n\nAWS AMI ID: \\{\\{ my_ami_id }}\n\nAWS Instance ID: \\{\\{ my_instance_id \\}\\}\n\nAWS Instance Type: \\{\\{ my_instance_type \\}\\} \n\nAWS availability zone: \\{\\{ my_availability_zone \\}\\}"
+      requested_item_state: "3"
+
+  - name: DDW - Update request ticket - failure
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/servicenow/update_sn_req_itm.yml
+    credentials:
+      - ServiceNow ITSM Credential
+    extra_vars:
+      requested_item_comments: "Uh-Oh something broke.\n\nServiceNow incident number: \\{\\{ incident_ticket '\\}\\}\n\nAnsible Job ID: \\{\\{ my_job_id \\}\\}\n\nMessage: \\{\\{ my_error \\}\\}"
+      requested_item_state: "4"
+
+  - name: DDW - Provision Access
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/06_windows_account_create.yml
+    credentials:
+      - Daily Demo Windows
+      - "{{ my_vault }}"
+
+  - name: DDW - Powershell Improvement
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Windows Workshop Execution Environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/05_powershell_improve.yml
+    credentials:
+      - Daily Demo Windows
+
+  - name: DDW - Patching
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Windows Workshop Execution Environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/07_windows_patching.yml
+    credentials:
+      - Daily Demo Windows
+
+  - name: DDW - Create a CMDB record
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/servicenow/create_ci.yml
+    credentials:
+      - ServiceNow ITSM Credential
+    extra_vars:
+      ci_assigned_to: "{{ my_snow_caller_name }}"
+
+  - name: DDW - Create CMDB relationship
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Default execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/servicenow/create_cmdb_relationship.yml
+    credentials:
+      - ServiceNow ITSM Credential
+
+  - name: Windows Day 2 Audit
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Windows Workshop Execution Environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/auditme.yml
+    credentials:
+      - Daily Demo Windows
+
+  - name: Windows Day 2 Patching
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: Windows Workshop Execution Environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/07_windows_patching.yml
+    credentials:
+      - Daily Demo Windows
+    survey_enabled: true
+    survey_spec:
+      name: ""
+      description: ""
+      spec:
+        - name: Reboot
+          type: multiplechoice
+          question_name: Should we reboot after patching?
+          question_description: Should the server reboot after patching?
+          variable: windows_patching_reboot_server
+          required: true
+          default: "no"
+          choices:
+            - "yes"
+            - "no"
+        - name: Patches
+          type: multiselect
+          question_name: What kind of patches do you want to install?
+          question_description: Select the patches you want to install.
+          variable: patches
+          required: true
+          default: CriticalUpdates
+          choices:
+            - Application
+            - Connectors
+            - CriticalUpdates
+            - DefinitionUpdates
+            - DeveloperKits
+            - FeaturePacks Guidance
+            - SecurityUpdates
+            - ServicePacks
+            - Tools
+            - UpdateRollups
+            - Updates
