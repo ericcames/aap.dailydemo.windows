@@ -60,6 +60,13 @@
         inventory: "{{ inventory_name }}"
         hosts: "{{ item['public_dns_name'] }}"
         preserve_existing_hosts: true
+        variables:
+          ansible_connection: winrm
+          ansible_winrm_transport: credssp
+          ansible_winrm_server_cert_validation: ignore
+          ansible_port: 5986
+          ansible_winrm_operation_timeout_sec: 180
+          ansible_winrm_read_timeout_sec: 240
 
     - name: Update runtime inventory
       loop: "{{ instance_info['instances'] }}"
