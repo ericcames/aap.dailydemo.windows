@@ -265,7 +265,7 @@ controller_templates:
       description: ""
       spec:
         - name: http_tokens_value
-          type: singleselect
+          type: multiplechoice
           question_name: IMDSv2 required or optional?
           question_description: Is IMDSv2 required or optional?
           variable: http_tokens_value
