@@ -6,7 +6,7 @@
     resource: "{{ create_cmdb_relationship_resource }}"
     data:
       child: "{{ create_cmdb_relationship_child }}"
-      parent: "{{ get_instance_info_server }}"
+      parent: "{{ my_server }}"
       type: "{{ create_cmdb_relationship_type }}"
 
 - name: Print the result
