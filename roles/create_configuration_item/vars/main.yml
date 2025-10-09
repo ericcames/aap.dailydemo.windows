@@ -8,7 +8,7 @@ create_configuration_item_operational_status: operational
 #
 # These variables are set as extra vars
 create_configuration_item_short_description: "created by aap.kona.services:8443"
-create_configuration_item_assigned_to: mickey.mouse
+create_configuration_item_assigned_to: service.ansible
 #
 # These are stats picked up in the get_instance_info role
 # get_instance_info_server: ''
