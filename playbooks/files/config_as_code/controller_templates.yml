@@ -125,7 +125,7 @@ controller_templates:
     job_type: run
     inventory: AAP Managed Inventory
     organization: "{{ my_organization }}"
-    execution_environment: Windows Workshop Execution Environment
+    execution_environment: windows workshop execution environment
     project: aap.dailydemo.windows
     playbook: playbooks/05_powershell_improve.yml
     credentials:
@@ -135,7 +135,7 @@ controller_templates:
     job_type: run
     inventory: AAP Managed Inventory
     organization: "{{ my_organization }}"
-    execution_environment: Windows Workshop Execution Environment
+    execution_environment: windows workshop execution environment
     project: aap.dailydemo.windows
     playbook: playbooks/07_windows_patching.yml
     credentials:
@@ -167,7 +167,7 @@ controller_templates:
     job_type: run
     inventory: AAP Managed Inventory
     organization: "{{ my_organization }}"
-    execution_environment: Windows Workshop Execution Environment
+    execution_environment: windows workshop execution environment
     project: aap.dailydemo.windows
     playbook: playbooks/auditme.yml
     credentials:
@@ -177,7 +177,7 @@ controller_templates:
     job_type: run
     inventory: AAP Managed Inventory
     organization: "{{ my_organization }}"
-    execution_environment: Windows Workshop Execution Environment
+    execution_environment: windows workshop execution environment
     project: aap.dailydemo.windows
     playbook: playbooks/07_windows_patching.yml
     credentials:
