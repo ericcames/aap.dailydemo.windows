@@ -239,17 +239,6 @@ controller_templates:
     credentials:
       - Daily Demo Windows
 
-  - name: Windows Day 2 - Check SMB Server
-    job_type: run
-    inventory: AAP Managed Inventory
-    organization: "{{ my_organization }}"
-    execution_environment: windows workshop execution environment
-    project: aap.dailydemo.windows
-    playbook: playbooks/smb_server.yml
-    job_tags: check, disable
-    credentials:
-      - Daily Demo Windows
-
   - name: Windows Day 2 - .Net Patch Status
     job_type: run
     inventory: AAP Managed Inventory
