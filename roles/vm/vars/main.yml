@@ -3,7 +3,7 @@ vm_environment_tag: windows-dailydemo
 vm_vpc_name: "{{ vpc_name }}"
 vm_user_name: "{{ vpc_user_name }}"
 vm_subnet_name: "{{ vm_vpc_name }}_Subnet"
-vm_image: ami-0650dc5218bb7d5e8
+vm_image: ami-06bafac9975cc7e16
 vm_count: 1
 vm_region: "{{ vpc_region }}"
 vm_assign_public_ip: true
