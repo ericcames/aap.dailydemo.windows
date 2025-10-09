@@ -1,0 +1,18 @@
+{
+    "name": "IMDSv2",
+    "description": "Basic Survey",
+    "spec": [
+      {
+        "question_description": "",
+        "min": 0,
+        "default": "present",
+        "max": 0,
+        "required": true,
+        "choices": "required\noptional",
+        "new_question": true,
+        "variable": "http_tokens_value",
+        "question_name": "IMDSv2 required or optional?",
+        "type": "multiplechoice"
+      }
+    ]
+  }

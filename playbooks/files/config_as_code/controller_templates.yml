@@ -216,3 +216,59 @@ controller_templates:
             - Tools
             - UpdateRollups
             - Updates
+
+  - name: Windows Day 2 - Check SMB Server
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: windows workshop execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/smb_server.yml
+    job_tags: check
+    credentials:
+      - Daily Demo Windows
+
+  - name: Windows Day 2 - Disable SMB Server
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: windows workshop execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/smb_server.yml
+    job_tags: disable
+    credentials:
+      - Daily Demo Windows
+
+  - name: Windows Day 2 - Check SMB Server
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: windows workshop execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/smb_server.yml
+    job_tags: check, disable
+    credentials:
+      - Daily Demo Windows
+
+  - name: Windows Day 2 - .Net Patch Status
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: windows workshop execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/dot_net_patch_report.yml
+    credentials:
+      - Daily Demo Windows
+
+  - name: Windows Day 2 - Update IMDSv2
+    job_type: run
+    inventory: AAP Managed Inventory
+    organization: "{{ my_organization }}"
+    execution_environment: windows workshop execution environment
+    project: aap.dailydemo.windows
+    playbook: playbooks/update_IMDSv2.yml
+    credentials:
+      - Daily Demo Windows
+      - "{{ my_aws_credential }}"
+    survey_enabled: true
+    survey: "{{ lookup('template', 'template_surveys/imdsv2.json') | regex_replace('\\n', '') }}"
