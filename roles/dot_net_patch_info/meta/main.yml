@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: dot_net_patch_info
+  author: Eric Ames (ericcames)
+  description: Gather .net patch info
+  license: MIT License
+  min_ansible_version: "2.16"

@@ -12,9 +12,6 @@ Amazon Web Services Credential in Ansible Automation Platform
 Role Variables
 --------------
 ```
-region: us-west-1
-servername: Windows Daily Demo
-my_email_address: mickeymouse@example.com
 ansible_python_interpreter: /usr/bin/python3
 ```
 Dependencies

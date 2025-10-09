@@ -1,0 +1,12 @@
+---
+- name: Creating a vpc
+  hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Include the vpc role
+      tags:
+        - create
+      ansible.builtin.include_role:
+        name: vpc

@@ -1,0 +1,12 @@
+---
+- name: Creating a host and group in the inventory
+  hosts: localhost
+  connection: local
+
+  tasks:
+
+    - name: Include the inventory role
+      tags:
+        - create
+      ansible.builtin.include_role:
+        name: inventory

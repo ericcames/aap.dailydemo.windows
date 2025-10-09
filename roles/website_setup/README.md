@@ -11,15 +11,8 @@ Windows Machine Credential
 Role Variables
 --------------
 ```
-iis_sites:
-  - name: 'AnsibleDemo'
-    port: '80'
-    path: 'C:\sites\dailydemo'
-iis_test_message: "Hello World!  My Demo IIS Server"
-sales_email_id: mickey
-tech_email_id: goofy
-sales_person_name: "Mickey Mouse"
-tech_person_name: "Goofy"
+website_setup_message: "This website is running on Microsoft Windows Server 2022 Datacenter"
+ansible_python_interpreter: /usr/bin/python3
 ```
 Dependencies
 ------------

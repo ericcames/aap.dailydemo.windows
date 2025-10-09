@@ -1,0 +1,31 @@
+---
+- name: Check Samba settings
+  tags:
+    - check
+  block:
+
+    - name: Checking the SMB Server Configuration
+      register: my_output
+      changed_when: false
+      ansible.windows.win_powershell:
+        script: |
+          Get-SmbServerConfiguration | Select EnableSMB1Protocol
+
+    - name: Print the SMB Server Configuration
+      ansible.builtin.debug:
+        msg: "{{ my_output.output }}"
+
+- name: Check Samba settings
+  tags:
+    - disable
+  block:
+
+    - name: Disable the SMB Server
+      register: my_output
+      ansible.windows.win_powershell:
+        script: |
+          Set-SmbServerConfiguration -EnableSMB1Protocol $false -Confirm:$false
+
+    - name: Print the SMB Server Configuration
+      ansible.builtin.debug:
+        msg: "{{ my_output.output }}"

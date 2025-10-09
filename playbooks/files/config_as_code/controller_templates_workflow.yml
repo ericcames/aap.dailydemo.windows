@@ -1,0 +1,120 @@
+---
+controller_workflows:
+-   name: Run workflow for the Windows Daily Demo
+    organization: "{{ my_organization }}"
+    extra_vars:
+      ticket_number: "RITM0010386"
+    related:
+      workflow_nodes:
+      -   identifier: DDW - Network Create
+          related:
+            success_nodes:
+            -   identifier: DDW - VM Create
+          unified_job_template:
+              name: DDW - Network Create
+              organization:
+                name: "{{ my_organization }}"
+              type: job_template
+      -   identifier: DDW - VM Create
+          related:
+            success_nodes:
+            -   identifier: DDW - Inventory Update
+            failure_nodes:
+            -   identifier: DDW - Create Incident
+          unified_job_template:
+            name: DDW - VM Create
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Inventory Update
+          related:
+            success_nodes:
+            -   identifier: DDW - Get Instance Info
+          unified_job_template:
+            name: DDW - Inventory Update
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Create Incident
+          related:
+            always_nodes:
+            -   identifier:  DDW - Update request ticket - failure
+          unified_job_template:
+            name: DDW - Create Incident
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Update request ticket - failure
+          unified_job_template:
+            name: DDW - Update request ticket - failure
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Get Instance Info
+          related:
+            success_nodes:
+            -   identifier: DDW - Create a CMDB record
+            -   identifier: DDW - Powershell Improvement
+          unified_job_template:
+            name: DDW - Get Instance Info
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Create a CMDB record
+          related:
+            success_nodes:
+            -   identifier: DDW - Create CMDB relationship
+          unified_job_template:
+            name: DDW - Create a CMDB record
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Create CMDB relationship
+          unified_job_template:
+            name: DDW - Create CMDB relationship
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Powershell Improvement
+          related:
+            success_nodes:
+            -   identifier: DDW - Website Setup
+            -   identifier: DDW - Provision Access
+          unified_job_template:
+            name: DDW - Powershell Improvement
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Website Setup
+          related:
+            success_nodes:
+            -   identifier: DDW - Patching
+          unified_job_template:
+            name: DDW - Website Setup
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Provision Access
+          related:
+            success_nodes:
+            -   identifier: DDW - Patching
+          unified_job_template:
+            name: DDW - Provision Access
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Patching
+          related:
+            always_nodes:
+            -   identifier: DDW - Update request ticket - success
+          unified_job_template:
+            name: DDW - Patching
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template
+      -   identifier: DDW - Update request ticket - success
+          unified_job_template:
+            name: DDW - Update request ticket - success
+            organization:
+              name: "{{ my_organization }}"
+            type: job_template

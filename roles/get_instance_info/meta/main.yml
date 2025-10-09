@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: get_instance_info
+  author: Eric Ames (ericcames)
+  description: Gather info we care about
+  license: MIT License
+  min_ansible_version: "2.16"
