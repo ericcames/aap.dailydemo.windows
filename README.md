@@ -80,7 +80,7 @@ env:
 
 - Automated incident management example
 
-[Example Error Handling in support of incident enrichment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/instance_create_aws/tasks/main.yml "Example Error Handling") <br>
+[Example Error Handling in support of incident enrichment](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/vm/tasks/main.yml "Example Error Handling") <br>
 [Youtube video on Automated Incident enrichment](https://youtu.be/ieO-cbzNqjU?si=z28o3rpAgLTDqdnB "Youtube video on Automated Incident enrichment") <br>
 
 ```
