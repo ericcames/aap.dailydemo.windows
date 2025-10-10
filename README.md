@@ -128,7 +128,7 @@ The user_data line in the task listed below is designed to work with a template 
 
 ![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/windowsmachinecred.png "Windows Machine Credential")
 
-[Windows Machine Instance Creation](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/instance_create_aws/tasks/main.yml "Windows Machine Instance Creation")<br>
+[Windows Machine Instance Creation](https://github.com/ericcames/aap.dailydemo.windows/blob/main/roles/vm/tasks/main.yml "Windows Machine Instance Creation")<br>
 ```
 - name: "Creating AWS VMs in {{ region }}"
       register: instance
