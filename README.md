@@ -2,6 +2,12 @@ Ansible Automation Platform Daily Demo for Windows
 =========
 A demo designed to showcase many of the use cases that people are looking for.  We are using the workflow visualizer to show how the various building blocks are put together and enable the delivery on demand of a custom website.  The playbooks call roles, the roles allow for ease of sharing the code and also allow for documentation of the various things needed in each role. The demo is designed to be integrated with an IT Service Management (ITSM) system.  Everything will be documented in ITSM system via the skillfull use of automation.  Check out the video below to see that "the art of the possible."
 
+Notes
+=========
+1. This demo is designed to work with the Red Hat Demo Platform. Please see the aap.as.code repo below. [aap.as.code](https://github.com/ericcames/aap.as.code "aap.as.code")
+2. This demo works with Amazon only currently.
+3. This demo works with ServiceNow.
+
 Day 0 - Configuration as code (CAC) a repeatable build process for this demo
 =========
 Configuration as code give you an easy way to recover/move your ansible related artifacts to a new platform.  That includes your hardcoded credentials.  The hardcoded credentials can be safely vaulted in an ansible vault file.  Check out the setup_demo.yml for the configurations for setting up this demo using configuration as code.
@@ -149,6 +155,7 @@ The user_data line in the task listed below is designed to work with a template 
         wait_timeout: 600
 ```
 # Day 2 Operations
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/winday2.png "Windows Day 2")
 **Audit**<br>
 Audit registry entries and repair if needed.  Document the work in a CSV file.<br>
 [Audit](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/auditme.yml "auditme.yml") <br>
