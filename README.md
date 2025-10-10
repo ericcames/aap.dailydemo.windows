@@ -4,7 +4,7 @@ A demo designed to showcase many of the use cases that people are looking for.  
 
 Notes
 =========
-1. This demo is designed to work with the Red Hat Demo Platform. Please see the aap.as.code repo below. - [aap.as.code](https://github.com/ericcames/aap.as.code "aap.as.code")
+1. This demo is designed to work with the Red Hat Demo Platform. Please see the aap.as.code repo below.[aap.as.code](https://github.com/ericcames/aap.as.code "aap.as.code")
 
 Day 0 - Configuration as code (CAC) a repeatable build process for this demo
 =========
