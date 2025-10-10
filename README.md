@@ -2,6 +2,11 @@ Ansible Automation Platform Daily Demo for Windows
 =========
 A demo designed to showcase many of the use cases that people are looking for.  We are using the workflow visualizer to show how the various building blocks are put together and enable the delivery on demand of a custom website.  The playbooks call roles, the roles allow for ease of sharing the code and also allow for documentation of the various things needed in each role. The demo is designed to be integrated with an IT Service Management (ITSM) system.  Everything will be documented in ITSM system via the skillfull use of automation.  Check out the video below to see that "the art of the possible."
 
+Notes
+=========
+1. This demo is designed to work with the Red Hat Demo Platform.
+  - [aap.as.code](https://github.com/ericcames/aap.as.code "aap.as.code")
+
 Day 0 - Configuration as code (CAC) a repeatable build process for this demo
 =========
 Configuration as code give you an easy way to recover/move your ansible related artifacts to a new platform.  That includes your hardcoded credentials.  The hardcoded credentials can be safely vaulted in an ansible vault file.  Check out the setup_demo.yml for the configurations for setting up this demo using configuration as code.
