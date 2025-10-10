@@ -2,11 +2,36 @@ Ansible Automation Platform Daily Demo for Windows
 =========
 A demo designed to showcase many of the use cases that people are looking for.  We are using the workflow visualizer to show how the various building blocks are put together and enable the delivery on demand of a custom website.  The playbooks call roles, the roles allow for ease of sharing the code and also allow for documentation of the various things needed in each role. The demo is designed to be integrated with an IT Service Management (ITSM) system.  Everything will be documented in ITSM system via the skillfull use of automation.  Check out the video below to see that "the art of the possible."
 
-# The workflow
+Day 0 - Configuration as code (CAC) a repeatable build process for this demo
+=========
+Configuration as code give you an easy way to recover/move your ansible related artifacts to a new platform.  That includes your hardcoded credentials.  The hardcoded credentials can be safely vaulted in an ansible vault file.  Check out the setup_demo.yml for the configurations for setting up this demo using configuration as code.
 
+[Setup - Windows Daily Demo - CAC](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/setup_demo.yml "Setup - Windows Daily Demo - CAC")<br>
 
+Variables used in the setup template
+```
+my_organization: AmesCO
+timezone_id: America/Phoenix
+my_vault: Eric Ames
+my_aap_credential: Controller Credential
+my_aws_credential: AWS
+my_snow_caller_name: service.ansible
+my_username: service.ansible
+aap_configuration_async_retries: 60
+my_remote_vault: >-
+  https://raw.githubusercontent.com/ericcames/sourcefiles/refs/heads/main/vault_ames.yml
+my_remote_ssh_pub_key: >-
+  https://raw.githubusercontent.com/ericcames/sourcefiles/refs/heads/main/id_rsa.pub
+```
+
+Day 1 - Run workflow for the Windows Daily Demo
+=========
+
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/windowswf.png "Start of workflow")
 
 **The playbooks**
+
+![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/ddwtemps.png "The job templates")
 
 [Site Delete will clean everything up](https://github.com/ericcames/aap.dailydemo.windows/blob/main/playbooks/site_delete.yml "site_delete.yml")<br>
 
