@@ -26,10 +26,8 @@ my_remote_ssh_pub_key: >-
 
 Day 1 - Run workflow for the Windows Daily Demo
 =========
-# The workflow
 
 ![alt text](https://github.com/ericcames/aap.dailydemo.windows/blob/main/images/windowswf.png "Start of workflow")
-
 
 **The playbooks**
 
