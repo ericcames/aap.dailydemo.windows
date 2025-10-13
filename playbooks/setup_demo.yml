@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    my_organization: ""
+    my_organization: "IT Service Automation"
     my_vault: ""
     my_aap_credential: Controller Credential
     my_aws_credential: AWS
