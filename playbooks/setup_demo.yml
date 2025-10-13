@@ -37,10 +37,6 @@
         scope: write
         state: present
 
-    - name: Use our new token to make another call
-      ansible.builtin.set_fact:
-        aap_token: "{{ aap_token }}"
-
     - name: Grab vault from remote url
       ansible.builtin.get_url:
         url: '{{ my_remote_vault }}'
@@ -65,8 +61,6 @@
     - name: Remove my token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        # aap_username: "{{ lookup('ansible.builtin.env', 'CONTROLLER_USERNAME') }}"
-        existing_token:
-          - "{{ aap_token }}"
+        existing_token: "{{ aap_token }}"
         aap_validate_certs: false
         state: absent
