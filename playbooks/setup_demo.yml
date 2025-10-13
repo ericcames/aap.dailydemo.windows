@@ -61,6 +61,6 @@
     - name: Remove my token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        existing_token: "{{ token }}"
+        existing_token: "{{ existing_token.token }}"
         aap_validate_certs: false
         state: absent
