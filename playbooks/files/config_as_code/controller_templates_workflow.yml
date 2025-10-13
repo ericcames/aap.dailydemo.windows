@@ -2,6 +2,7 @@
 controller_workflows:
 -   name: Run workflow for the Windows Daily Demo
     organization: "{{ my_organization }}"
+    ask_variables_on_launch: true
     extra_vars:
       ticket_number: "RITM0010386"
     related:
