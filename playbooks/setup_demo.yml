@@ -58,12 +58,7 @@
         name: infra.aap_configuration.dispatch
 
     - name: Print Message
-      when: user_message is defined
-      ansible.builtin.debug:
-        msg: "{{ user_message }}"
-
-    - name: Print Message
-      when: token is defined
+      when: aap_token is defined
       ansible.builtin.debug:
         msg: "{{ aap_token }}"
 
