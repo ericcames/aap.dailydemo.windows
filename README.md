@@ -16,14 +16,8 @@ Configuration as code give you an easy way to recover/move your ansible related 
 
 Variables used in the setup template
 ```
-my_organization: AmesCO
 timezone_id: America/Phoenix
 my_vault: Eric Ames
-my_aap_credential: Controller Credential
-my_aws_credential: AWS
-my_snow_caller_name: service.ansible
-my_username: service.ansible
-aap_configuration_async_retries: 60
 my_remote_vault: >-
   https://raw.githubusercontent.com/ericcames/sourcefiles/refs/heads/main/vault_ames.yml
 my_remote_ssh_pub_key: >-

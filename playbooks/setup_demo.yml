@@ -6,10 +6,13 @@
     ansible_python_interpreter: /usr/bin/python3
     my_organization: ""
     my_vault: ""
-    my_aap_credential: ""
-    my_aws_credential: ""
+    my_aap_credential: Controller Credential
+    my_aws_credential: AWS
     my_aws_machine_credential: ""
     timezone_id: ""
+    my_snow_caller_name: service.ansible
+    my_username: service.ansible
+    aap_configuration_async_retries: 60
 
   tasks:
 
