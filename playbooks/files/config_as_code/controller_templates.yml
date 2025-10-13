@@ -25,6 +25,7 @@ controller_templates:
     job_tags: create
     credentials:
       - "{{ my_aws_credential }}"
+      - ServiceNow ITSM Credential
 
   - name: DDW - VM Create
     job_type: run
