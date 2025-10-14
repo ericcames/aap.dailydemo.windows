@@ -15,16 +15,6 @@
           - "Red Hat Ansible Automation Platform credential is not set"
           - "Please assign correct credentials to the Job Template"
 
-    # - name: Create a new token using username/password
-    #   ansible.controller.token:
-    #     controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-    #     controller_username: "{{ lookup('ansible.builtin.env', 'CONTROLLER_USERNAME') }}"
-    #     controller_password: "{{ lookup('ansible.builtin.env', 'CONTROLLER_PASSWORD') }}"
-    #     validate_certs: false
-    #     description: Daily Demo token
-    #     scope: write
-    #     state: present
-
     - name: Create a new token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
@@ -52,7 +42,6 @@
       loop: "{{ instance_info['instances'] }}"
       ansible.controller.host:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        # controller_oauthtoken: "{{ controller_token }}"
         controller_oauthtoken: "{{ aap_token['token'] }}"
         validate_certs: false
         name: "{{ item['public_dns_name'] }}"
@@ -64,7 +53,6 @@
       loop: "{{ instance_info['instances'] }}"
       ansible.controller.group:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        # controller_oauthtoken: "{{ controller_token }}"
         controller_oauthtoken: "{{ aap_token['token'] }}"
         validate_certs: false
         name: windemo
@@ -87,14 +75,6 @@
         groups:
           - windemo
 
-    # - name: Remove my daily demo token
-    #   ansible.controller.token:
-    #     controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-    #     controller_oauthtoken: "{{ controller_token }}"
-    #     existing_token: "{{ controller_token }}"
-    #     validate_certs: false
-    #     state: absent
-
     - name: Remove my token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
@@ -113,20 +93,11 @@
         - windemo
       ansible.controller.group:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        # controller_oauthtoken: "{{ controller_token }}"
         controller_oauthtoken: "{{ aap_token['token'] }}"
         validate_certs: false
         name: "{{ item }}"
         inventory: "{{ inventory_name }}"
         state: absent
-
-    # - name: Remove my daily demo token
-    #   ansible.controller.token:
-    #     controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-    #     controller_oauthtoken: "{{ controller_token }}"
-    #     existing_token: "{{ controller_token }}"
-    #     validate_certs: false
-    #     state: absent
 
     - name: Remove my token
       ansible.platform.token:
