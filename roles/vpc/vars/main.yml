@@ -2,9 +2,9 @@
 vpc_name: windows-dailydemo
 vpc_cidr: 172.16.2.0/24
 vpc_region: us-west-1
-vpc_user_name: eric.ames
+vpc_user_name: service.ansible
 vpc_alwaysup: false
-vpc_deleteby: hercules
+vpc_deleteby: service.ansible
 vpc_ec2_ansible_group: "{{ vpc_user_name }}"
 vpc_ec2_security_group_name: "{{ vpc_name }}_SECGRP"
 vpc_ec2_vpc_subnet_name: "{{ vpc_name }}_Subnet"
