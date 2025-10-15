@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: update_IMDSv2_setting
+  author: Eric Ames (ericcames)
+  description: Update IMDSv2 setting in Amazon
+  license: MIT License
+  min_ansible_version: "2.16"
