@@ -1,4 +1,4 @@
-update_IMDSv2_setting
+update_imdsv2_setting
 =========
 ```
 This role sets the value of the IMDSv2.
@@ -40,7 +40,7 @@ Example Playbook
 
   roles:
 
-    - role: update_IMDSv2_setting
+    - role: update_imdsv2_setting
 ```
 License
 -------

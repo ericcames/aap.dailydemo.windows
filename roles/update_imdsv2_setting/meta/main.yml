@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: update_IMDSv2_setting
+  role_name: update_imdsv2_setting
   author: Eric Ames (ericcames)
   description: Update IMDSv2 setting in Amazon
   license: MIT License

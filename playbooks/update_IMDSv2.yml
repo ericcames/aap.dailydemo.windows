@@ -4,4 +4,4 @@
 
   roles:
 
-    - role: update_IMDSv2_setting
+    - role: update_imdsv2_setting
