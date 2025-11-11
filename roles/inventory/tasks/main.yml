@@ -42,7 +42,7 @@
       loop: "{{ instance_info['instances'] }}"
       ansible.controller.host:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        controller_oauthtoken: "{{ aap_token['token'] }}"
+        controller_oauthtoken: "{{ ansible_facts['aap_token']['token'] }}"
         validate_certs: false
         name: "{{ item['public_dns_name'] }}"
         inventory: "{{ inventory_name }}"
@@ -53,7 +53,7 @@
       loop: "{{ instance_info['instances'] }}"
       ansible.controller.group:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        controller_oauthtoken: "{{ aap_token['token'] }}"
+        controller_oauthtoken: "{{ ansible_facts['aap_token']['token'] }}"
         validate_certs: false
         name: windemo
         description: Automation Controller Group
@@ -78,8 +78,8 @@
     - name: Remove my token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        existing_token: "{{ aap_token }}"
-        aap_token: "{{ aap_token['token'] }}"
+        existing_token: "{{ ansible_facts['aap_token'] }}"
+        aap_token: "{{ ansible_facts['aap_token']['token'] }}"
         aap_validate_certs: false
         state: absent
 
@@ -93,7 +93,7 @@
         - windemo
       ansible.controller.group:
         controller_host: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        controller_oauthtoken: "{{ aap_token['token'] }}"
+        controller_oauthtoken: "{{ ansible_facts['aap_token']['token'] }}"
         validate_certs: false
         name: "{{ item }}"
         inventory: "{{ inventory_name }}"
@@ -102,7 +102,7 @@
     - name: Remove my token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        existing_token: "{{ aap_token }}"
-        aap_token: "{{ aap_token['token'] }}"
+        existing_token: "{{ ansible_facts['aap_token'] }}"
+        aap_token: "{{ ansible_facts['aap_token']['token'] }}"
         aap_validate_certs: false
         state: absent
