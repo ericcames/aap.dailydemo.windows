@@ -54,14 +54,14 @@
         name: infra.aap_configuration.dispatch
 
     - name: Print Message
-      when: aap_token is defined
+      when: ansible_facts['aap_token'] is defined
       ansible.builtin.debug:
-        msg: "{{ aap_token }}"
+        msg: "{{ ansible_facts['aap_token'] }}"
 
     - name: Remove my token
       ansible.platform.token:
         aap_hostname: "{{ lookup('ansible.builtin.env', 'CONTROLLER_HOST') }}"
-        existing_token: "{{ aap_token }}"
-        aap_token: "{{ aap_token['token'] }}"
+        existing_token: "{{ ansible_facts['aap_token'] }}"
+        aap_token: "{{ ansible_facts['aap_token']['token'] }}"
         aap_validate_certs: false
         state: absent
