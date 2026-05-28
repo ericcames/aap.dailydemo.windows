@@ -5,8 +5,9 @@ vm_environment_tag: windows-dailydemo
 vm_vpc_name: "{{ vpc_name }}"
 vm_user_name: "{{ vpc_user_name }}"
 vm_subnet_name: "{{ vm_vpc_name }}_Subnet"
-# Microsoft Windows Server 2025 Base
-vm_image: ami-072fcf26b3b4a134a
+# Microsoft Windows Server 2025 Base (Windows_Server-2025-English-Full-Base-2026.05.13, us-west-1)
+# Source of truth: SSM /aws/service/ami-windows-latest/Windows_Server-2025-English-Full-Base
+vm_image: ami-0a2d99cd134c33377
 vm_count: 1
 vm_region: "{{ vpc_region }}"
 vm_assign_public_ip: true
